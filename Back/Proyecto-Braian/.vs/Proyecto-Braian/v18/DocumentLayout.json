@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\Facundo\\Desktop\\Proyecto\\Proyecto-Braian\\Back\\Proyecto-Braian\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{18A434D4-4D83-49DA-85C9-5D98DE865D1E}|Proyecto Braian\\Web.csproj|c:\\users\\facundo\\desktop\\proyecto\\proyecto-braian\\back\\proyecto-braian\\proyecto braian\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{18A434D4-4D83-49DA-85C9-5D98DE865D1E}|Proyecto Braian\\Web.csproj|solutionrelative:proyecto braian\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{964F6C74-E843-47A0-AF0E-2A4282F4DEF6}|Infrastructure\\Infrastructure.csproj|c:\\users\\facundo\\desktop\\proyecto\\proyecto-braian\\back\\proyecto-braian\\infrastructure\\infrastructure.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
       "RelativeMoniker": "D:0:0:{964F6C74-E843-47A0-AF0E-2A4282F4DEF6}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\infrastructure.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
@@ -29,10 +33,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{18A434D4-4D83-49DA-85C9-5D98DE865D1E}|Proyecto Braian\\Web.csproj|c:\\users\\facundo\\desktop\\proyecto\\proyecto-braian\\back\\proyecto-braian\\proyecto braian\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{18A434D4-4D83-49DA-85C9-5D98DE865D1E}|Proyecto Braian\\Web.csproj|solutionrelative:proyecto braian\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{18A434D4-4D83-49DA-85C9-5D98DE865D1E}|Proyecto Braian\\Web.csproj|c:\\users\\facundo\\desktop\\proyecto\\proyecto-braian\\back\\proyecto-braian\\proyecto braian\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{18A434D4-4D83-49DA-85C9-5D98DE865D1E}|Proyecto Braian\\Web.csproj|solutionrelative:proyecto braian\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{18A434D4-4D83-49DA-85C9-5D98DE865D1E}|Proyecto Braian\\Web.csproj|c:\\users\\facundo\\desktop\\proyecto\\proyecto-braian\\back\\proyecto-braian\\proyecto braian\\controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -102,11 +102,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "IOrderService.cs",
               "DocumentMoniker": "C:\\Users\\Facundo\\Desktop\\Proyecto\\Proyecto-Braian\\Back\\Proyecto-Braian\\Application\\Interfaces\\IOrderService.cs",
               "RelativeDocumentMoniker": "Application\\Interfaces\\IOrderService.cs",
@@ -120,20 +120,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Infrastructure",
               "DocumentMoniker": "C:\\Users\\Facundo\\Desktop\\Proyecto\\Proyecto-Braian\\Back\\Proyecto-Braian\\Infrastructure\\Infrastructure.csproj",
               "RelativeDocumentMoniker": "Infrastructure\\Infrastructure.csproj",
               "ToolTip": "C:\\Users\\Facundo\\Desktop\\Proyecto\\Proyecto-Braian\\Back\\Proyecto-Braian\\Infrastructure\\Infrastructure.csproj",
               "RelativeToolTip": "Infrastructure\\Infrastructure.csproj",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABgAAAANAAAAAAAAAA==",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAA8AAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
               "WhenOpened": "2026-01-07T23:05:45.36Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "Domain",
               "DocumentMoniker": "C:\\Users\\Facundo\\Desktop\\Proyecto\\Proyecto-Braian\\Back\\Proyecto-Braian\\Domain\\Domain.csproj",
               "RelativeDocumentMoniker": "Domain\\Domain.csproj",
@@ -146,7 +146,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "RepositoryCollectionExtension.cs",
               "DocumentMoniker": "C:\\Users\\Facundo\\Desktop\\Proyecto\\Proyecto-Braian\\Back\\Proyecto-Braian\\Infrastructure\\Extensions\\RepositoryCollectionExtension.cs",
               "RelativeDocumentMoniker": "Infrastructure\\Extensions\\RepositoryCollectionExtension.cs",
@@ -159,20 +159,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 0,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\Facundo\\Desktop\\Proyecto\\Proyecto-Braian\\Back\\Proyecto-Braian\\Proyecto Braian\\appsettings.json",
               "RelativeDocumentMoniker": "Proyecto Braian\\appsettings.json",
               "ToolTip": "C:\\Users\\Facundo\\Desktop\\Proyecto\\Proyecto-Braian\\Back\\Proyecto-Braian\\Proyecto Braian\\appsettings.json",
               "RelativeToolTip": "Proyecto Braian\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2026-01-07T20:42:41.413Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "appsettings.Development.json",
               "DocumentMoniker": "C:\\Users\\Facundo\\Desktop\\Proyecto\\Proyecto-Braian\\Back\\Proyecto-Braian\\Proyecto Braian\\appsettings.Development.json",
               "RelativeDocumentMoniker": "Proyecto Braian\\appsettings.Development.json",
@@ -185,7 +185,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "DataBaseContext.cs",
               "DocumentMoniker": "C:\\Users\\Facundo\\Desktop\\Proyecto\\Proyecto-Braian\\Back\\Proyecto-Braian\\Infrastructure\\Context\\DataBaseContext.cs",
               "RelativeDocumentMoniker": "Infrastructure\\Context\\DataBaseContext.cs",
@@ -198,7 +198,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Web.csproj",
               "DocumentMoniker": "C:\\Users\\Facundo\\Desktop\\Proyecto\\Proyecto-Braian\\Back\\Proyecto-Braian\\Proyecto Braian\\Web.csproj",
               "RelativeDocumentMoniker": "Proyecto Braian\\Web.csproj",
