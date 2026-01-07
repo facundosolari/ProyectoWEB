@@ -380,3 +380,5 @@ C:\Users\Facundo\Desktop\Proyecto\Proyecto-Braian\Back\Proyecto-Braian\Proyecto 
 C:\Users\Facundo\Desktop\Proyecto\Proyecto-Braian\Back\Proyecto-Braian\Proyecto Braian\bin\Debug\net8.0\runtimes\win-x64\native\krb5_64.dll
 C:\Users\Facundo\Desktop\Proyecto\Proyecto-Braian\Back\Proyecto-Braian\Proyecto Braian\bin\Debug\net8.0\runtimes\win-x64\native\krbcc64.dll
 C:\Users\Facundo\Desktop\Proyecto\Proyecto-Braian\Back\Proyecto-Braian\Proyecto Braian\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Windows.Extensions.dll
+C:\Users\Facundo\Desktop\Proyecto\Proyecto-Braian\Back\Proyecto-Braian\Proyecto Braian\bin\Debug\net8.0\Npgsql.dll
+C:\Users\Facundo\Desktop\Proyecto\Proyecto-Braian\Back\Proyecto-Braian\Proyecto Braian\bin\Debug\net8.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll

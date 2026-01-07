@@ -698,6 +698,31 @@
           }
         }
       },
+      "Npgsql/7.0.4": {
+        "dependencies": {
+          "Microsoft.Extensions.Logging.Abstractions": "9.0.10"
+        },
+        "runtime": {
+          "lib/net7.0/Npgsql.dll": {
+            "assemblyVersion": "7.0.4.0",
+            "fileVersion": "7.0.4.0"
+          }
+        }
+      },
+      "Npgsql.EntityFrameworkCore.PostgreSQL/7.0.4": {
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "9.0.10",
+          "Microsoft.EntityFrameworkCore.Abstractions": "9.0.10",
+          "Microsoft.EntityFrameworkCore.Relational": "9.0.10",
+          "Npgsql": "7.0.4"
+        },
+        "runtime": {
+          "lib/net7.0/Npgsql.EntityFrameworkCore.PostgreSQL.dll": {
+            "assemblyVersion": "7.0.4.0",
+            "fileVersion": "7.0.4.0"
+          }
+        }
+      },
       "Pomelo.EntityFrameworkCore.MySql/9.0.0": {
         "dependencies": {
           "Microsoft.EntityFrameworkCore.Relational": "9.0.10",
@@ -1037,6 +1062,7 @@
           "Microsoft.EntityFrameworkCore": "9.0.10",
           "Microsoft.EntityFrameworkCore.Sqlite": "9.0.10",
           "Microsoft.EntityFrameworkCore.Sqlite.Design": "1.1.6",
+          "Npgsql.EntityFrameworkCore.PostgreSQL": "7.0.4",
           "Swashbuckle.AspNetCore": "6.4.0"
         },
         "runtime": {
@@ -1051,7 +1077,8 @@
           "Microsoft.AspNetCore.Authentication.JwtBearer": "8.0.8",
           "Microsoft.EntityFrameworkCore": "9.0.10",
           "Microsoft.EntityFrameworkCore.Sqlite": "9.0.10",
-          "Microsoft.EntityFrameworkCore.Sqlite.Design": "1.1.6"
+          "Microsoft.EntityFrameworkCore.Sqlite.Design": "1.1.6",
+          "Npgsql.EntityFrameworkCore.PostgreSQL": "7.0.4"
         },
         "runtime": {
           "Domain.dll": {
@@ -1354,6 +1381,20 @@
       "sha512": "sha512-pdgNNMai3zv51W5aq268sujXUyx7SNdE2bj1wZcWjAQrKMFZV260lbqYop1d2GM67JI1huLRwxo9ZqnfF/lC6A==",
       "path": "newtonsoft.json/13.0.4",
       "hashPath": "newtonsoft.json.13.0.4.nupkg.sha512"
+    },
+    "Npgsql/7.0.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-7UVPYy2RP0ci04PED1tc9ZCaTw/DfSdSkLiGEFCAvwMwsgA/bAluj1liNzP1IpN0MFofnOF0cm1zJfmbEuCehg==",
+      "path": "npgsql/7.0.4",
+      "hashPath": "npgsql.7.0.4.nupkg.sha512"
+    },
+    "Npgsql.EntityFrameworkCore.PostgreSQL/7.0.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ZYMtyG6pmLtUsFAx0/XaIlVkJM+1gArWEKD55cLLxiVlGScAphjiGj+G7Gk16yg5lhhdWx+bgXWpIUISXuS33g==",
+      "path": "npgsql.entityframeworkcore.postgresql/7.0.4",
+      "hashPath": "npgsql.entityframeworkcore.postgresql.7.0.4.nupkg.sha512"
     },
     "Pomelo.EntityFrameworkCore.MySql/9.0.0": {
       "type": "package",
