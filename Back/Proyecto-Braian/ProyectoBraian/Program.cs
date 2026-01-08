@@ -4,8 +4,12 @@ using Infrastructure.Extensions;
 var builder = WebApplication.CreateBuilder(args);
 
 // ----------------------------
-// SERVICIOS
+// Escuchar en el puerto dinámico de Railway (ANTES de Build)
+var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
+builder.WebHost.UseUrls($"http://*:{port}");
+
 // ----------------------------
+// SERVICIOS
 builder.Services.AddControllers();
 
 // CORS para frontend (cookies necesitan AllowCredentials)
@@ -24,57 +28,45 @@ builder.Services.AddCors(options =>
     );
 });
 
+// ----------------------------
 // Infraestructura y servicios
 builder.Services.AddInfrastructureServices(builder.Configuration);
 builder.Services.AddApplicationServices();
 builder.Services.AddHttpContextAccessor();
 
+// ----------------------------
 // JWT Authentication
+// Ahora se asegura de leer correctamente las variables de entorno
 builder.Services.AddJwtAuthentication(builder.Configuration);
 
+// ----------------------------
 // Swagger
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// ----------------------------
+// BUILD APP
 var app = builder.Build();
 
 // ----------------------------
 // PIPELINE DE MIDDLEWARE
-// ----------------------------
-/*
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
-*/
-
 app.UseSwagger();
 app.UseSwaggerUI();
 
-// ✅ Aplicar CORS ANTES de los controladores y autorización
 app.UseCors("AllowFrontend");
 
 app.UseStaticFiles();
 
-// HTTPS
 //app.UseHttpsRedirection();
 
-// Autenticación y autorización
 app.UseAuthentication();
 app.UseAuthorization();
 
+// ----------------------------
 // Mapear controladores
-
 app.MapGet("/health", () => Results.Ok("Healthy"));
 app.MapControllers();
 
 // ----------------------------
-// Escuchar en el puerto dinámico de Railway
-// ----------------------------
-
-
 // Ejecutar app
-var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
-builder.WebHost.UseUrls($"http://*:{port}");
 app.Run();
