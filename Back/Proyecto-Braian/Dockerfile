@@ -18,7 +18,7 @@ RUN dotnet restore "ProyectoBraian/ProyectoBraian.csproj"
 COPY . .
 
 # Compilar la app en modo Release
-RUN dotnet publish "ProyectoBraian/ProyectoBraian.csproj" -c Release -o /app/publish
+RUN dotnet publish "ProyectoBraian/ProyectoBraian.csproj" -c Debug -o /app/publish
 
 # =========================
 # Etapa 2: Runtime
