@@ -41,11 +41,16 @@ var app = builder.Build();
 // ----------------------------
 // PIPELINE DE MIDDLEWARE
 // ----------------------------
+/*
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+*/
+
+app.UseSwagger();
+app.UseSwaggerUI();
 
 // ✅ Aplicar CORS ANTES de los controladores y autorización
 app.UseCors("AllowFrontend");
@@ -60,6 +65,8 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 // Mapear controladores
+
+app.MapGet("/", () => "API online 🚀");
 app.MapControllers();
 
 // ----------------------------
