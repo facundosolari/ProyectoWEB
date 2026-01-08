@@ -9,7 +9,7 @@ COPY *.sln ./
 COPY Domain/*.csproj ./Domain/
 COPY Application/*.csproj ./Application/
 COPY Infrastructure/*.csproj ./Infrastructure/
-COPY "Proyecto Braian"/*.csproj ./Proyecto\ Braian/
+COPY Web/*.csproj ./Proyecto\ Braian/
 
 # Restaurar dependencias
 RUN dotnet restore "Proyecto Braian/Proyecto Braian.csproj"
