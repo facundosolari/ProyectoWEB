@@ -16,7 +16,7 @@ builder.Services.AddCors(options =>
             .WithOrigins(
                 "http://localhost:5173", // desarrollo
                 "https://cobacha-60edd35ba-facundosolaris-projects.vercel.app", // prod Vercel
-                "https://proyectoweb.railway.app" // prod Railway
+                "https://proyectoweb.up.railway.app" // prod Railway
             )
             .AllowAnyHeader()
             .AllowAnyMethod()
