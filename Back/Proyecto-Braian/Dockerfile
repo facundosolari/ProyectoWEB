@@ -26,12 +26,9 @@ RUN dotnet publish "ProyectoBraian/ProyectoBraian.csproj" -c Release -o /app/pub
 FROM mcr.microsoft.com/dotnet/aspnet:8.0
 WORKDIR /app
 
-# Copiar la app compilada desde la etapa de build
 COPY --from=build /app/publish .
 
-# Variables de entorno para MySQL (Railway)
-
-# Puerto que usa la app
+ENV ASPNETCORE_URLS=http://+:8080
 EXPOSE 8080
 
 # Comando de arranque
