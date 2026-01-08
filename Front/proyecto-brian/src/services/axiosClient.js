@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosClient = axios.create({
-  baseURL: "https://localhost:7076/api",
+  baseURL: "http://proyectoweb.railway.app/weatherforecast",
   withCredentials: true, // cookies HttpOnly se envían automáticamente
 });
 
