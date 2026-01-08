@@ -4,7 +4,7 @@ import "../styles/ProductDetailModal.css";
 
 const ProductDetailModal = ({ product, onClose, allProducts, onChangeProduct }) => {
   const { addToCart, user } = useUser();
-  const baseUrl = "https://proyectoweb.railway.app";
+  const baseUrl = "http://proyectoweb.railway.app";
 
   // preselecciona el primer talle habilitado
   const firstSizeId = product.sizes?.find((s) => s.habilitado)?.id.toString() || "";
