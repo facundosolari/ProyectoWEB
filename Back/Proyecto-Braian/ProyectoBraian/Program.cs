@@ -64,7 +64,11 @@ app.UseAuthorization();
 
 // ----------------------------
 // Mapear controladores
-app.MapGet("/health", () => Results.Ok("Healthy"));
+app.MapGet("/health", (ILogger<Program> log) =>
+{
+    log.LogInformation("Healthcheck requested at {time}", DateTime.UtcNow);
+    return Results.Ok("Healthy");
+});
 app.MapControllers();
 
 // ----------------------------
