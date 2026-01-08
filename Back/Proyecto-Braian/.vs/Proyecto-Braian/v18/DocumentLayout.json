@@ -3,20 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\Facundo\\Desktop\\Proyecto\\Proyecto-Braian\\Back\\Proyecto-Braian\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{27A73CA5-3A8E-8D05-E1D8-D7CD6406FCAC}|ProyectoBraian\\ProyectoBraian.csproj|c:\\users\\facundo\\desktop\\proyecto\\proyecto-braian\\back\\proyecto-braian\\proyectobraian\\proyectobraian.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{27A73CA5-3A8E-8D05-E1D8-D7CD6406FCAC}|ProyectoBraian\\ProyectoBraian.csproj|solutionrelative:proyectobraian\\proyectobraian.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{97BDB8F1-18F7-4FE3-87CD-C7172A4649B2}|Application\\Application.csproj|c:\\users\\facundo\\desktop\\proyecto\\proyecto-braian\\back\\proyecto-braian\\application\\application.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
       "RelativeMoniker": "D:0:0:{97BDB8F1-18F7-4FE3-87CD-C7172A4649B2}|Application\\Application.csproj|solutionrelative:application\\application.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{964F6C74-E843-47A0-AF0E-2A4282F4DEF6}|Infrastructure\\Infrastructure.csproj|c:\\users\\facundo\\desktop\\proyecto\\proyecto-braian\\back\\proyecto-braian\\infrastructure\\data\\productrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{964F6C74-E843-47A0-AF0E-2A4282F4DEF6}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\data\\productrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{97BDB8F1-18F7-4FE3-87CD-C7172A4649B2}|Application\\Application.csproj|c:\\users\\facundo\\desktop\\proyecto\\proyecto-braian\\back\\proyecto-braian\\application\\mappings\\detallefacturaciondto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{97BDB8F1-18F7-4FE3-87CD-C7172A4649B2}|Application\\Application.csproj|solutionrelative:application\\mappings\\detallefacturaciondto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{2DD042C6-30C6-4455-BB3E-15D6D0B13A31}|Domain\\Domain.csproj|c:\\users\\facundo\\desktop\\proyecto\\proyecto-braian\\back\\proyecto-braian\\domain\\domain.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
@@ -25,6 +13,18 @@
     {
       "AbsoluteMoniker": "D:0:0:{964F6C74-E843-47A0-AF0E-2A4282F4DEF6}|Infrastructure\\Infrastructure.csproj|c:\\users\\facundo\\desktop\\proyecto\\proyecto-braian\\back\\proyecto-braian\\infrastructure\\infrastructure.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
       "RelativeMoniker": "D:0:0:{964F6C74-E843-47A0-AF0E-2A4282F4DEF6}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\infrastructure.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{27A73CA5-3A8E-8D05-E1D8-D7CD6406FCAC}|ProyectoBraian\\ProyectoBraian.csproj|c:\\users\\facundo\\desktop\\proyecto\\proyecto-braian\\back\\proyecto-braian\\proyectobraian\\proyectobraian.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{27A73CA5-3A8E-8D05-E1D8-D7CD6406FCAC}|ProyectoBraian\\ProyectoBraian.csproj|solutionrelative:proyectobraian\\proyectobraian.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{964F6C74-E843-47A0-AF0E-2A4282F4DEF6}|Infrastructure\\Infrastructure.csproj|c:\\users\\facundo\\desktop\\proyecto\\proyecto-braian\\back\\proyecto-braian\\infrastructure\\data\\productrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{964F6C74-E843-47A0-AF0E-2A4282F4DEF6}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\data\\productrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{97BDB8F1-18F7-4FE3-87CD-C7172A4649B2}|Application\\Application.csproj|c:\\users\\facundo\\desktop\\proyecto\\proyecto-braian\\back\\proyecto-braian\\application\\mappings\\detallefacturaciondto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{97BDB8F1-18F7-4FE3-87CD-C7172A4649B2}|Application\\Application.csproj|solutionrelative:application\\mappings\\detallefacturaciondto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{964F6C74-E843-47A0-AF0E-2A4282F4DEF6}|Infrastructure\\Infrastructure.csproj|c:\\users\\facundo\\desktop\\proyecto\\proyecto-braian\\back\\proyecto-braian\\infrastructure\\extensions\\repositorycollectionextension.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -114,7 +114,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
@@ -132,59 +132,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ProyectoBraian",
-              "DocumentMoniker": "C:\\Users\\Facundo\\Desktop\\Proyecto\\Proyecto-Braian\\Back\\Proyecto-Braian\\ProyectoBraian\\ProyectoBraian.csproj",
-              "RelativeDocumentMoniker": "ProyectoBraian\\ProyectoBraian.csproj",
-              "ToolTip": "C:\\Users\\Facundo\\Desktop\\Proyecto\\Proyecto-Braian\\Back\\Proyecto-Braian\\ProyectoBraian\\ProyectoBraian.csproj",
-              "RelativeToolTip": "ProyectoBraian\\ProyectoBraian.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAXAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2026-01-08T02:50:04.064Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "ProductRepository.cs",
-              "DocumentMoniker": "C:\\Users\\Facundo\\Desktop\\Proyecto\\Proyecto-Braian\\Back\\Proyecto-Braian\\Infrastructure\\Data\\ProductRepository.cs",
-              "RelativeDocumentMoniker": "Infrastructure\\Data\\ProductRepository.cs",
-              "ToolTip": "C:\\Users\\Facundo\\Desktop\\Proyecto\\Proyecto-Braian\\Back\\Proyecto-Braian\\Infrastructure\\Data\\ProductRepository.cs",
-              "RelativeToolTip": "Infrastructure\\Data\\ProductRepository.cs",
-              "ViewState": "AgIAAEYAAAAAAAAAAAAWwE4AAAApAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-08T02:41:34.853Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "DetalleFacturacionDTO.cs",
-              "DocumentMoniker": "C:\\Users\\Facundo\\Desktop\\Proyecto\\Proyecto-Braian\\Back\\Proyecto-Braian\\Application\\Mappings\\DetalleFacturacionDTO.cs",
-              "RelativeDocumentMoniker": "Application\\Mappings\\DetalleFacturacionDTO.cs",
-              "ToolTip": "C:\\Users\\Facundo\\Desktop\\Proyecto\\Proyecto-Braian\\Back\\Proyecto-Braian\\Application\\Mappings\\DetalleFacturacionDTO.cs",
-              "RelativeToolTip": "Application\\Mappings\\DetalleFacturacionDTO.cs",
-              "ViewState": "AgIAACwAAAAAAAAAAAAwwDYAAAATAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-08T02:41:22.742Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Application",
-              "DocumentMoniker": "C:\\Users\\Facundo\\Desktop\\Proyecto\\Proyecto-Braian\\Back\\Proyecto-Braian\\Application\\Application.csproj",
-              "RelativeDocumentMoniker": "Application\\Application.csproj",
-              "ToolTip": "C:\\Users\\Facundo\\Desktop\\Proyecto\\Proyecto-Braian\\Back\\Proyecto-Braian\\Application\\Application.csproj",
-              "RelativeToolTip": "Application\\Application.csproj",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAAwB4AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2026-01-08T02:27:31.994Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
               "Title": "Infrastructure.csproj",
               "DocumentMoniker": "C:\\Users\\Facundo\\Desktop\\Proyecto\\Proyecto-Braian\\Back\\Proyecto-Braian\\Infrastructure\\Infrastructure.csproj",
               "RelativeDocumentMoniker": "Infrastructure\\Infrastructure.csproj",
@@ -197,7 +145,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
               "Title": "Domain.csproj",
               "DocumentMoniker": "C:\\Users\\Facundo\\Desktop\\Proyecto\\Proyecto-Braian\\Back\\Proyecto-Braian\\Domain\\Domain.csproj",
               "RelativeDocumentMoniker": "Domain\\Domain.csproj",
@@ -206,6 +154,58 @@
               "ViewState": "AgIAAAYAAAAAAAAAAAAAABQAAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
               "WhenOpened": "2026-01-07T22:53:48.281Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Application",
+              "DocumentMoniker": "C:\\Users\\Facundo\\Desktop\\Proyecto\\Proyecto-Braian\\Back\\Proyecto-Braian\\Application\\Application.csproj",
+              "RelativeDocumentMoniker": "Application\\Application.csproj",
+              "ToolTip": "C:\\Users\\Facundo\\Desktop\\Proyecto\\Proyecto-Braian\\Back\\Proyecto-Braian\\Application\\Application.csproj",
+              "RelativeToolTip": "Application\\Application.csproj",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAAwB4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-01-08T02:27:31.994Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ProyectoBraian",
+              "DocumentMoniker": "C:\\Users\\Facundo\\Desktop\\Proyecto\\Proyecto-Braian\\Back\\Proyecto-Braian\\ProyectoBraian\\ProyectoBraian.csproj",
+              "RelativeDocumentMoniker": "ProyectoBraian\\ProyectoBraian.csproj",
+              "ToolTip": "C:\\Users\\Facundo\\Desktop\\Proyecto\\Proyecto-Braian\\Back\\Proyecto-Braian\\ProyectoBraian\\ProyectoBraian.csproj",
+              "RelativeToolTip": "ProyectoBraian\\ProyectoBraian.csproj",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAwAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-01-08T02:50:04.064Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "DetalleFacturacionDTO.cs",
+              "DocumentMoniker": "C:\\Users\\Facundo\\Desktop\\Proyecto\\Proyecto-Braian\\Back\\Proyecto-Braian\\Application\\Mappings\\DetalleFacturacionDTO.cs",
+              "RelativeDocumentMoniker": "Application\\Mappings\\DetalleFacturacionDTO.cs",
+              "ToolTip": "C:\\Users\\Facundo\\Desktop\\Proyecto\\Proyecto-Braian\\Back\\Proyecto-Braian\\Application\\Mappings\\DetalleFacturacionDTO.cs",
+              "RelativeToolTip": "Application\\Mappings\\DetalleFacturacionDTO.cs",
+              "ViewState": "AgIAACwAAAAAAAAAAAAwwDYAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-08T02:41:22.742Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ProductRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Facundo\\Desktop\\Proyecto\\Proyecto-Braian\\Back\\Proyecto-Braian\\Infrastructure\\Data\\ProductRepository.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Data\\ProductRepository.cs",
+              "ToolTip": "C:\\Users\\Facundo\\Desktop\\Proyecto\\Proyecto-Braian\\Back\\Proyecto-Braian\\Infrastructure\\Data\\ProductRepository.cs",
+              "RelativeToolTip": "Infrastructure\\Data\\ProductRepository.cs",
+              "ViewState": "AgIAAEYAAAAAAAAAAAAWwE4AAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-08T02:41:34.853Z",
               "EditorCaption": ""
             },
             {

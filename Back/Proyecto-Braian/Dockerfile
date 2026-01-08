@@ -1,7 +1,7 @@
 # =========================
 # Etapa 1: Build
 # =========================
-FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /app
 
 # Copiar solo la solución y los proyectos para un restore rápido
@@ -23,7 +23,7 @@ RUN dotnet publish "ProyectoBraian/ProyectoBraian.csproj" -c Release -o /app/pub
 # =========================
 # Etapa 2: Runtime
 # =========================
-FROM mcr.microsoft.com/dotnet/aspnet:9.0
+FROM mcr.microsoft.com/dotnet/aspnet:8.0
 WORKDIR /app
 
 # Copiar la app compilada desde la etapa de build
