@@ -6,7 +6,10 @@ var builder = WebApplication.CreateBuilder(args);
 // ----------------------------
 // Escuchar en el puerto dinámico de Railway (ANTES de Build)
 var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
-builder.WebHost.UseUrls($"http://*:{port}");
+builder.WebHost.ConfigureKestrel(options =>
+{
+    options.ListenAnyIP(int.Parse(port)); // HTTP
+});
 
 // ----------------------------
 // SERVICIOS
