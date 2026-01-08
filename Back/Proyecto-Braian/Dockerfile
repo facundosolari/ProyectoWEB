@@ -1,49 +1,37 @@
-build
-RUN dotnet publish ProyectoBraian/ProyectoBraian.csproj     -c Release     -o /app/publish     --no-restore
-2s
-/usr/share/dotnet/sdk/8.0.416/Sdks/Microsoft.NET.Sdk/targets/Microsoft.PackageDependencyResolution.targets(266,5): error MSB4018: The "ResolvePackageAssets" task failed unexpectedly. [/src/Application/Application.csproj]
-/usr/share/dotnet/sdk/8.0.416/Sdks/Microsoft.NET.Sdk/targets/Microsoft.PackageDependencyResolution.targets(266,5): error MSB4018: NuGet.Packaging.Core.PackagingException: Unable to find fallback package folder 'C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages'. [/src/Application/Application.csproj]
-/usr/share/dotnet/sdk/8.0.416/Sdks/Microsoft.NET.Sdk/targets/Microsoft.PackageDependencyResolution.targets(266,5): error MSB4018:    at NuGet.Packaging.FallbackPackagePathResolver..ctor(String userPackageFolder, IEnumerable`1 fallbackPackageFolders) [/src/Application/Application.csproj]
-/usr/share/dotnet/sdk/8.0.416/Sdks/Microsoft.NET.Sdk/targets/Microsoft.PackageDependencyResolution.targets(266,5): error MSB4018:    at Microsoft.NET.Build.Tasks.NuGetPackageResolver.CreateResolver(IEnumerable`1 packageFolders) [/src/Application/Application.csproj]
-/usr/share/dotnet/sdk/8.0.416/Sdks/Microsoft.NET.Sdk/targets/Microsoft.PackageDependencyResolution.targets(266,5): error MSB4018:    at Microsoft.NET.Build.Tasks.ResolvePackageAssets.CacheWriter..ctor(ResolvePackageAssets task) [/src/Application/Application.csproj]
-/usr/share/dotnet/sdk/8.0.416/Sdks/Microsoft.NET.Sdk/targets/Microsoft.PackageDependencyResolution.targets(266,5): error MSB4018:    at Microsoft.NET.Build.Tasks.ResolvePackageAssets.CacheReader.CreateReaderFromDisk(ResolvePackageAssets task, Byte[] settingsHash) [/src/Application/Application.csproj]
-/usr/share/dotnet/sdk/8.0.416/Sdks/Microsoft.NET.Sdk/targets/Microsoft.PackageDependencyResolution.targets(266,5): error MSB4018:    at Microsoft.NET.Build.Tasks.ResolvePackageAssets.CacheReader..ctor(ResolvePackageAssets task) [/src/Application/Application.csproj]
-/usr/share/dotnet/sdk/8.0.416/Sdks/Microsoft.NET.Sdk/targets/Microsoft.PackageDependencyResolution.targets(266,5): error MSB4018:    at Microsoft.NET.Build.Tasks.ResolvePackageAssets.ReadItemGroups() [/src/Application/Application.csproj]
-/usr/share/dotnet/sdk/8.0.416/Sdks/Microsoft.NET.Sdk/targets/Microsoft.PackageDependencyResolution.targets(266,5): error MSB4018:    at Microsoft.NET.Build.Tasks.ResolvePackageAssets.ExecuteCore() [/src/Application/Application.csproj]
-/usr/share/dotnet/sdk/8.0.416/Sdks/Microsoft.NET.Sdk/targets/Microsoft.PackageDependencyResolution.targets(266,5): error MSB4018:    at Microsoft.NET.Build.Tasks.TaskBase.Execute() [/src/Application/Application.csproj]
-/usr/share/dotnet/sdk/8.0.416/Sdks/Microsoft.NET.Sdk/targets/Microsoft.PackageDependencyResolution.targets(266,5): error MSB4018:    at Microsoft.Build.BackEnd.TaskExecutionHost.Execute() [/src/Application/Application.csproj]
-/usr/share/dotnet/sdk/8.0.416/Sdks/Microsoft.NET.Sdk/targets/Microsoft.PackageDependencyResolution.targets(266,5): error MSB4018:    at Microsoft.Build.BackEnd.TaskBuilder.ExecuteInstantiatedTask(TaskExecutionHost taskExecutionHost, TaskLoggingContext taskLoggingContext, TaskHost taskHost, ItemBucket bucket, TaskExecutionMode howToExecuteTask) [/src/Application/Application.csproj]
-/usr/share/dotnet/sdk/8.0.416/Sdks/Microsoft.NET.Sdk/targets/Microsoft.PackageDependencyResolution.targets(266,5): error MSB4018: The "ResolvePackageAssets" task failed unexpectedly. [/src/Domain/Domain.csproj]
-/usr/share/dotnet/sdk/8.0.416/Sdks/Microsoft.NET.Sdk/targets/Microsoft.PackageDependencyResolution.targets(266,5): error MSB4018: NuGet.Packaging.Core.PackagingException: Unable to find fallback package folder 'C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages'. [/src/Domain/Domain.csproj]
-/usr/share/dotnet/sdk/8.0.416/Sdks/Microsoft.NET.Sdk/targets/Microsoft.PackageDependencyResolution.targets(266,5): error MSB4018:    at NuGet.Packaging.FallbackPackagePathResolver..ctor(String userPackageFolder, IEnumerable`1 fallbackPackageFolders) [/src/Domain/Domain.csproj]
-/usr/share/dotnet/sdk/8.0.416/Sdks/Microsoft.NET.Sdk/targets/Microsoft.PackageDependencyResolution.targets(266,5): error MSB4018:    at Microsoft.NET.Build.Tasks.NuGetPackageResolver.CreateResolver(IEnumerable`1 packageFolders) [/src/Domain/Domain.csproj]
-/usr/share/dotnet/sdk/8.0.416/Sdks/Microsoft.NET.Sdk/targets/Microsoft.PackageDependencyResolution.targets(266,5): error MSB4018:    at Microsoft.NET.Build.Tasks.ResolvePackageAssets.CacheWriter..ctor(ResolvePackageAssets task) [/src/Domain/Domain.csproj]
-/usr/share/dotnet/sdk/8.0.416/Sdks/Microsoft.NET.Sdk/targets/Microsoft.PackageDependencyResolution.targets(266,5): error MSB4018:    at Microsoft.NET.Build.Tasks.ResolvePackageAssets.CacheReader.CreateReaderFromDisk(ResolvePackageAssets task, Byte[] settingsHash) [/src/Domain/Domain.csproj]
-/usr/share/dotnet/sdk/8.0.416/Sdks/Microsoft.NET.Sdk/targets/Microsoft.PackageDependencyResolution.targets(266,5): error MSB4018:    at Microsoft.NET.Build.Tasks.ResolvePackageAssets.CacheReader..ctor(ResolvePackageAssets task) [/src/Domain/Domain.csproj]
-/usr/share/dotnet/sdk/8.0.416/Sdks/Microsoft.NET.Sdk/targets/Microsoft.PackageDependencyResolution.targets(266,5): error MSB4018:    at Microsoft.NET.Build.Tasks.ResolvePackageAssets.ReadItemGroups() [/src/Domain/Domain.csproj]
-/usr/share/dotnet/sdk/8.0.416/Sdks/Microsoft.NET.Sdk/targets/Microsoft.PackageDependencyResolution.targets(266,5): error MSB4018:    at Microsoft.NET.Build.Tasks.ResolvePackageAssets.ExecuteCore() [/src/Domain/Domain.csproj]
-/usr/share/dotnet/sdk/8.0.416/Sdks/Microsoft.NET.Sdk/targets/Microsoft.PackageDependencyResolution.targets(266,5): error MSB4018:    at Microsoft.NET.Build.Tasks.TaskBase.Execute() [/src/Domain/Domain.csproj]
-/usr/share/dotnet/sdk/8.0.416/Sdks/Microsoft.NET.Sdk/targets/Microsoft.PackageDependencyResolution.targets(266,5): error MSB4018:    at Microsoft.Build.BackEnd.TaskExecutionHost.Execute() [/src/Domain/Domain.csproj]
-/usr/share/dotnet/sdk/8.0.416/Sdks/Microsoft.NET.Sdk/targets/Microsoft.PackageDependencyResolution.targets(266,5): error MSB4018:    at Microsoft.Build.BackEnd.TaskBuilder.ExecuteInstantiatedTask(TaskExecutionHost taskExecutionHost, TaskLoggingContext taskLoggingContext, TaskHost taskHost, ItemBucket bucket, TaskExecutionMode howToExecuteTask) [/src/Domain/Domain.csproj]
-/usr/share/dotnet/sdk/8.0.416/Sdks/Microsoft.NET.Sdk/targets/Microsoft.PackageDependencyResolution.targets(266,5): error MSB4018: The "ResolvePackageAssets" task failed unexpectedly. [/src/Infrastructure/Infrastructure.csproj]
-/usr/share/dotnet/sdk/8.0.416/Sdks/Microsoft.NET.Sdk/targets/Microsoft.PackageDependencyResolution.targets(266,5): error MSB4018: NuGet.Packaging.Core.PackagingException: Unable to find fallback package folder 'C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages'. [/src/Infrastructure/Infrastructure.csproj]
-/usr/share/dotnet/sdk/8.0.416/Sdks/Microsoft.NET.Sdk/targets/Microsoft.PackageDependencyResolution.targets(266,5): error MSB4018:    at NuGet.Packaging.FallbackPackagePathResolver..ctor(String userPackageFolder, IEnumerable`1 fallbackPackageFolders) [/src/Infrastructure/Infrastructure.csproj]
-/usr/share/dotnet/sdk/8.0.416/Sdks/Microsoft.NET.Sdk/targets/Microsoft.PackageDependencyResolution.targets(266,5): error MSB4018:    at Microsoft.NET.Build.Tasks.NuGetPackageResolver.CreateResolver(IEnumerable`1 packageFolders) [/src/Infrastructure/Infrastructure.csproj]
-/usr/share/dotnet/sdk/8.0.416/Sdks/Microsoft.NET.Sdk/targets/Microsoft.PackageDependencyResolution.targets(266,5): error MSB4018:    at Microsoft.NET.Build.Tasks.ResolvePackageAssets.CacheWriter..ctor(ResolvePackageAssets task) [/src/Infrastructure/Infrastructure.csproj]
-/usr/share/dotnet/sdk/8.0.416/Sdks/Microsoft.NET.Sdk/targets/Microsoft.PackageDependencyResolution.targets(266,5): error MSB4018:    at Microsoft.NET.Build.Tasks.ResolvePackageAssets.CacheReader.CreateReaderFromDisk(ResolvePackageAssets task, Byte[] settingsHash) [/src/Infrastructure/Infrastructure.csproj]
-/usr/share/dotnet/sdk/8.0.416/Sdks/Microsoft.NET.Sdk/targets/Microsoft.PackageDependencyResolution.targets(266,5): error MSB4018:    at Microsoft.NET.Build.Tasks.ResolvePackageAssets.CacheReader..ctor(ResolvePackageAssets task) [/src/Infrastructure/Infrastructure.csproj]
-/usr/share/dotnet/sdk/8.0.416/Sdks/Microsoft.NET.Sdk/targets/Microsoft.PackageDependencyResolution.targets(266,5): error MSB4018:    at Microsoft.NET.Build.Tasks.ResolvePackageAssets.ReadItemGroups() [/src/Infrastructure/Infrastructure.csproj]
-/usr/share/dotnet/sdk/8.0.416/Sdks/Microsoft.NET.Sdk/targets/Microsoft.PackageDependencyResolution.targets(266,5): error MSB4018:    at Microsoft.NET.Build.Tasks.ResolvePackageAssets.ExecuteCore() [/src/Infrastructure/Infrastructure.csproj]
-/usr/share/dotnet/sdk/8.0.416/Sdks/Microsoft.NET.Sdk/targets/Microsoft.PackageDependencyResolution.targets(266,5): error MSB4018:    at Microsoft.NET.Build.Tasks.TaskBase.Execute() [/src/Infrastructure/Infrastructure.csproj]
-/usr/share/dotnet/sdk/8.0.416/Sdks/Microsoft.NET.Sdk/targets/Microsoft.PackageDependencyResolution.targets(266,5): error MSB4018:    at Microsoft.Build.BackEnd.TaskExecutionHost.Execute() [/src/Infrastructure/Infrastructure.csproj]
-/usr/share/dotnet/sdk/8.0.416/Sdks/Microsoft.NET.Sdk/targets/Microsoft.PackageDependencyResolution.targets(266,5): error MSB4018:    at Microsoft.Build.BackEnd.TaskBuilder.ExecuteInstantiatedTask(TaskExecutionHost taskExecutionHost, TaskLoggingContext taskLoggingContext, TaskHost taskHost, ItemBucket bucket, TaskExecutionMode howToExecuteTask) [/src/Infrastructure/Infrastructure.csproj]
-Dockerfile:18
--------------------
-17 |
-18 | >>> RUN dotnet publish ProyectoBraian/ProyectoBraian.csproj \
-19 | >>>     -c Release \
-20 | >>>     -o /app/publish \
-21 | >>>     --no-restore
-22 |
--------------------
-ERROR: failed to build: failed to solve: process "/bin/sh -c dotnet publish ProyectoBraian/ProyectoBraian.csproj     -c Release     -o /app/publish     --no-restore" did not complete successfully: exit code: 1
+# =========================
+# Etapa 1: Build
+# =========================
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+WORKDIR /src
+
+# Copiar solución y proyectos
+COPY Proyecto-Braian.sln ./
+COPY Domain/Domain.csproj Domain/
+COPY Application/Application.csproj Application/
+COPY Infrastructure/Infrastructure.csproj Infrastructure/
+COPY ProyectoBraian/ProyectoBraian.csproj ProyectoBraian/
+
+# Restaurar paquetes NuGet
+RUN dotnet restore ProyectoBraian/ProyectoBraian.csproj
+
+# Copiar todo el código
+COPY . .
+
+# Publicar la app en Release
+RUN dotnet publish ProyectoBraian/ProyectoBraian.csproj -c Release -o /app/publish
+
+# =========================
+# Etapa 2: Runtime
+# =========================
+FROM mcr.microsoft.com/dotnet/aspnet:8.0
+WORKDIR /app
+
+# Copiar la app publicada desde la etapa de build
+COPY --from=build /app/publish .
+
+# Configuración de Railway: escuchar en el puerto dinámico
+ENV ASPNETCORE_URLS=http://+:8080
+EXPOSE 8080
+
+# Comando de arranque
+ENTRYPOINT ["dotnet", "ProyectoBraian.dll"]
