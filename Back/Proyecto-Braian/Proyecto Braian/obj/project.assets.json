@@ -9548,9 +9548,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Facundo\\Desktop\\Proyecto\\Proyecto-Braian\\Back\\Proyecto-Braian\\Proyecto Braian\\Web.csproj",
-      "projectName": "Web",
-      "projectPath": "C:\\Users\\Facundo\\Desktop\\Proyecto\\Proyecto-Braian\\Back\\Proyecto-Braian\\Proyecto Braian\\Web.csproj",
+      "projectUniqueName": "C:\\Users\\Facundo\\Desktop\\Proyecto\\Proyecto-Braian\\Back\\Proyecto-Braian\\Proyecto Braian\\ProyectoBraian.csproj",
+      "projectName": "ProyectoBraian",
+      "projectPath": "C:\\Users\\Facundo\\Desktop\\Proyecto\\Proyecto-Braian\\Back\\Proyecto-Braian\\Proyecto Braian\\ProyectoBraian.csproj",
       "packagesPath": "C:\\Users\\Facundo\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Facundo\\Desktop\\Proyecto\\Proyecto-Braian\\Back\\Proyecto-Braian\\Proyecto Braian\\obj\\",
       "projectStyle": "PackageReference",

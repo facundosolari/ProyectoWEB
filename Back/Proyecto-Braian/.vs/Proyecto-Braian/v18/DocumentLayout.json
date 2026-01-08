@@ -11,8 +11,8 @@
       "RelativeMoniker": "D:0:0:{964F6C74-E843-47A0-AF0E-2A4282F4DEF6}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\infrastructure.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{18A434D4-4D83-49DA-85C9-5D98DE865D1E}|Proyecto Braian\\Web.csproj|c:\\users\\facundo\\desktop\\proyecto\\proyecto-braian\\back\\proyecto-braian\\proyecto braian\\web.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{18A434D4-4D83-49DA-85C9-5D98DE865D1E}|Proyecto Braian\\Web.csproj|solutionrelative:proyecto braian\\web.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+      "AbsoluteMoniker": "D:0:0:{18A434D4-4D83-49DA-85C9-5D98DE865D1E}|Proyecto Braian\\ProyectoBraian.csproj|c:\\users\\facundo\\desktop\\proyecto\\proyecto-braian\\back\\proyecto-braian\\proyecto braian\\proyectobraian.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{18A434D4-4D83-49DA-85C9-5D98DE865D1E}|Proyecto Braian\\ProyectoBraian.csproj|solutionrelative:proyecto braian\\proyectobraian.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
       "AbsoluteMoniker": "D:0:0:{964F6C74-E843-47A0-AF0E-2A4282F4DEF6}|Infrastructure\\Infrastructure.csproj|c:\\users\\facundo\\desktop\\proyecto\\proyecto-braian\\back\\proyecto-braian\\infrastructure\\extensions\\repositorycollectionextension.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -115,34 +115,31 @@
               "ViewState": "AgIAABEAAAAAAAAAAIA7wDQAAABKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-31T17:12:57.487Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Infrastructure",
+              "Title": "Infrastructure.csproj",
               "DocumentMoniker": "C:\\Users\\Facundo\\Desktop\\Proyecto\\Proyecto-Braian\\Back\\Proyecto-Braian\\Infrastructure\\Infrastructure.csproj",
               "RelativeDocumentMoniker": "Infrastructure\\Infrastructure.csproj",
               "ToolTip": "C:\\Users\\Facundo\\Desktop\\Proyecto\\Proyecto-Braian\\Back\\Proyecto-Braian\\Infrastructure\\Infrastructure.csproj",
               "RelativeToolTip": "Infrastructure\\Infrastructure.csproj",
               "ViewState": "AgIAAAYAAAAAAAAAAAAAAA8AAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2026-01-07T23:05:45.36Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-07T23:05:45.36Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "Domain",
+              "Title": "Domain.csproj",
               "DocumentMoniker": "C:\\Users\\Facundo\\Desktop\\Proyecto\\Proyecto-Braian\\Back\\Proyecto-Braian\\Domain\\Domain.csproj",
               "RelativeDocumentMoniker": "Domain\\Domain.csproj",
               "ToolTip": "C:\\Users\\Facundo\\Desktop\\Proyecto\\Proyecto-Braian\\Back\\Proyecto-Braian\\Domain\\Domain.csproj",
               "RelativeToolTip": "Domain\\Domain.csproj",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAABMAAAA8AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2026-01-07T22:53:48.281Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-07T22:53:48.281Z"
             },
             {
               "$type": "Document",
@@ -154,8 +151,7 @@
               "RelativeToolTip": "Infrastructure\\Extensions\\RepositoryCollectionExtension.cs",
               "ViewState": "AgIAABIAAAAAAAAAAAA3wB4AAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-07T20:44:34.176Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-07T20:44:34.176Z"
             },
             {
               "$type": "Document",
@@ -165,7 +161,7 @@
               "RelativeDocumentMoniker": "Proyecto Braian\\appsettings.json",
               "ToolTip": "C:\\Users\\Facundo\\Desktop\\Proyecto\\Proyecto-Braian\\Back\\Proyecto-Braian\\Proyecto Braian\\appsettings.json",
               "RelativeToolTip": "Proyecto Braian\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAACAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2026-01-07T20:42:41.413Z",
               "EditorCaption": ""
@@ -180,8 +176,7 @@
               "RelativeToolTip": "Proyecto Braian\\appsettings.Development.json",
               "ViewState": "AgIAAAMAAAAAAAAAAABRwBUAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-01-07T20:42:35.269Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-07T20:42:35.269Z"
             },
             {
               "$type": "Document",
@@ -193,21 +188,19 @@
               "RelativeToolTip": "Infrastructure\\Context\\DataBaseContext.cs",
               "ViewState": "AgIAAC4AAAAAAAAAAAAUwAwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-07T20:29:22.054Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-07T20:29:22.054Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
               "Title": "Web.csproj",
-              "DocumentMoniker": "C:\\Users\\Facundo\\Desktop\\Proyecto\\Proyecto-Braian\\Back\\Proyecto-Braian\\Proyecto Braian\\Web.csproj",
-              "RelativeDocumentMoniker": "Proyecto Braian\\Web.csproj",
-              "ToolTip": "C:\\Users\\Facundo\\Desktop\\Proyecto\\Proyecto-Braian\\Back\\Proyecto-Braian\\Proyecto Braian\\Web.csproj",
-              "RelativeToolTip": "Proyecto Braian\\Web.csproj",
+              "DocumentMoniker": "C:\\Users\\Facundo\\Desktop\\Proyecto\\Proyecto-Braian\\Back\\Proyecto-Braian\\Proyecto Braian\\ProyectoBraian.csproj",
+              "RelativeDocumentMoniker": "Proyecto Braian\\ProyectoBraian.csproj",
+              "ToolTip": "C:\\Users\\Facundo\\Desktop\\Proyecto\\Proyecto-Braian\\Back\\Proyecto-Braian\\Proyecto Braian\\ProyectoBraian.csproj",
+              "RelativeToolTip": "Proyecto Braian\\ProyectoBraian.csproj",
               "ViewState": "AgIAAAYAAAAAAAAAAAAAABYAAABMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2026-01-07T19:59:29.552Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-07T19:59:29.552Z"
             },
             {
               "$type": "Document",
@@ -219,8 +212,7 @@
               "RelativeToolTip": "Proyecto Braian\\Controllers\\OrderMessageController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAEIAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-02T18:59:09.699Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-02T18:59:09.699Z"
             },
             {
               "$type": "Document",
@@ -232,8 +224,7 @@
               "RelativeToolTip": "Proyecto Braian\\Controllers\\DescuentoController.cs",
               "ViewState": "AgIAADIAAAAAAAAAAAA9wEEAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-02T18:57:37.471Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-02T18:57:37.471Z"
             },
             {
               "$type": "Document",
@@ -245,8 +236,7 @@
               "RelativeToolTip": "Proyecto Braian\\Controllers\\CategoryController.cs",
               "ViewState": "AgIAAEMAAAAAAAAAAAAqwGMAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-02T18:55:16.74Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-02T18:55:16.74Z"
             },
             {
               "$type": "Document",
@@ -258,8 +248,7 @@
               "RelativeToolTip": "Application\\Interfaces\\IOrderMessageService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAIBZwBUAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-02T18:54:39.094Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-02T18:54:39.094Z"
             },
             {
               "$type": "Document",
@@ -271,8 +260,7 @@
               "RelativeToolTip": "Application\\Interfaces\\IOrderItemService.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAIBZwBIAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-02T18:54:34.511Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-02T18:54:34.511Z"
             },
             {
               "$type": "Document",
@@ -284,8 +272,7 @@
               "RelativeToolTip": "Application\\Interfaces\\IDescuentoService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-02T18:54:19.847Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-02T18:54:19.847Z"
             },
             {
               "$type": "Document",
@@ -297,8 +284,7 @@
               "RelativeToolTip": "Application\\Interfaces\\ICategoryService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-02T18:53:48.628Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-02T18:53:48.628Z"
             },
             {
               "$type": "Document",
@@ -310,8 +296,7 @@
               "RelativeToolTip": "Application\\Services\\CategoryService.cs",
               "ViewState": "AgIAAEUAAAAAAAAAAAAmwFQAAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-02T18:51:39.291Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-02T18:51:39.291Z"
             },
             {
               "$type": "Document",
@@ -323,8 +308,7 @@
               "RelativeToolTip": "Application\\Services\\DescuentoService.cs",
               "ViewState": "AgIAAC4AAAAAAAAAAAAcwEIAAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-02T18:48:57.881Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-02T18:48:57.881Z"
             },
             {
               "$type": "Document",
@@ -336,8 +320,7 @@
               "RelativeToolTip": "Application\\Services\\OrderItemService.cs",
               "ViewState": "AgIAAJgAAAAAAAAAAAAuwKUAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-02T18:41:11.409Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-02T18:41:11.409Z"
             },
             {
               "$type": "Document",
@@ -349,8 +332,7 @@
               "RelativeToolTip": "Application\\Services\\OrderMessageService.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAIBZwIUAAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-02T18:35:02.389Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-02T18:35:02.389Z"
             },
             {
               "$type": "Document",
@@ -362,8 +344,7 @@
               "RelativeToolTip": "Proyecto Braian\\Controllers\\UserController.cs",
               "ViewState": "AgIAADkAAAAAAAAAAAArwEUAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-31T17:30:18.849Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-31T17:30:18.849Z"
             },
             {
               "$type": "Document",
@@ -375,8 +356,7 @@
               "RelativeToolTip": "Proyecto Braian\\Controllers\\ProductController.cs",
               "ViewState": "AgIAAJMAAAAAAAAAAAAWwJ0AAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-31T17:29:17.566Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-31T17:29:17.566Z"
             },
             {
               "$type": "Document",
@@ -388,8 +368,7 @@
               "RelativeToolTip": "Proyecto Braian\\Controllers\\OrderController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-31T17:19:09.872Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-31T17:19:09.872Z"
             },
             {
               "$type": "Document",
@@ -401,8 +380,7 @@
               "RelativeToolTip": "Proyecto Braian\\Controllers\\ReglaDescuentoController.cs",
               "ViewState": "AgIAADAAAAAAAAAAAAAvwD4AAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-31T17:19:38.161Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-31T17:19:38.161Z"
             }
           ]
         }

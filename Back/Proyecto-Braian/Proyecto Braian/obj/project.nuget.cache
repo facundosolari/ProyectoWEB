@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "9pjeWaJ7Mms=",
+  "dgSpecHash": "CCHdQ6Me4oE=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Facundo\\Desktop\\Proyecto\\Proyecto-Braian\\Back\\Proyecto-Braian\\Proyecto Braian\\Web.csproj",
+  "projectFilePath": "C:\\Users\\Facundo\\Desktop\\Proyecto\\Proyecto-Braian\\Back\\Proyecto-Braian\\Proyecto Braian\\ProyectoBraian.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Facundo\\.nuget\\packages\\bouncycastle.cryptography\\2.6.2\\bouncycastle.cryptography.2.6.2.nupkg.sha512",
     "C:\\Users\\Facundo\\.nuget\\packages\\google.apis\\1.73.0\\google.apis.1.73.0.nupkg.sha512",
@@ -170,9 +170,9 @@
       "code": "NU1608",
       "level": "Warning",
       "message": "Se detectó una versión del paquete fuera de la restricción de dependencia: Npgsql.EntityFrameworkCore.PostgreSQL 7.0.4 requiere Microsoft.EntityFrameworkCore (>= 7.0.5 && < 8.0.0), pero la versión Microsoft.EntityFrameworkCore 9.0.10 ya se resolvió.",
-      "projectPath": "C:\\Users\\Facundo\\Desktop\\Proyecto\\Proyecto-Braian\\Back\\Proyecto-Braian\\Proyecto Braian\\Web.csproj",
+      "projectPath": "C:\\Users\\Facundo\\Desktop\\Proyecto\\Proyecto-Braian\\Back\\Proyecto-Braian\\Proyecto Braian\\ProyectoBraian.csproj",
       "warningLevel": 1,
-      "filePath": "C:\\Users\\Facundo\\Desktop\\Proyecto\\Proyecto-Braian\\Back\\Proyecto-Braian\\Proyecto Braian\\Web.csproj",
+      "filePath": "C:\\Users\\Facundo\\Desktop\\Proyecto\\Proyecto-Braian\\Back\\Proyecto-Braian\\Proyecto Braian\\ProyectoBraian.csproj",
       "libraryId": "Microsoft.EntityFrameworkCore",
       "targetGraphs": [
         "net8.0"
@@ -182,9 +182,9 @@
       "code": "NU1608",
       "level": "Warning",
       "message": "Se detectó una versión del paquete fuera de la restricción de dependencia: Npgsql.EntityFrameworkCore.PostgreSQL 7.0.4 requiere Microsoft.EntityFrameworkCore.Abstractions (>= 7.0.5 && < 8.0.0), pero la versión Microsoft.EntityFrameworkCore.Abstractions 9.0.10 ya se resolvió.",
-      "projectPath": "C:\\Users\\Facundo\\Desktop\\Proyecto\\Proyecto-Braian\\Back\\Proyecto-Braian\\Proyecto Braian\\Web.csproj",
+      "projectPath": "C:\\Users\\Facundo\\Desktop\\Proyecto\\Proyecto-Braian\\Back\\Proyecto-Braian\\Proyecto Braian\\ProyectoBraian.csproj",
       "warningLevel": 1,
-      "filePath": "C:\\Users\\Facundo\\Desktop\\Proyecto\\Proyecto-Braian\\Back\\Proyecto-Braian\\Proyecto Braian\\Web.csproj",
+      "filePath": "C:\\Users\\Facundo\\Desktop\\Proyecto\\Proyecto-Braian\\Back\\Proyecto-Braian\\Proyecto Braian\\ProyectoBraian.csproj",
       "libraryId": "Microsoft.EntityFrameworkCore.Abstractions",
       "targetGraphs": [
         "net8.0"
@@ -194,9 +194,9 @@
       "code": "NU1608",
       "level": "Warning",
       "message": "Se detectó una versión del paquete fuera de la restricción de dependencia: Npgsql.EntityFrameworkCore.PostgreSQL 7.0.4 requiere Microsoft.EntityFrameworkCore.Relational (>= 7.0.5 && < 8.0.0), pero la versión Microsoft.EntityFrameworkCore.Relational 9.0.10 ya se resolvió.",
-      "projectPath": "C:\\Users\\Facundo\\Desktop\\Proyecto\\Proyecto-Braian\\Back\\Proyecto-Braian\\Proyecto Braian\\Web.csproj",
+      "projectPath": "C:\\Users\\Facundo\\Desktop\\Proyecto\\Proyecto-Braian\\Back\\Proyecto-Braian\\Proyecto Braian\\ProyectoBraian.csproj",
       "warningLevel": 1,
-      "filePath": "C:\\Users\\Facundo\\Desktop\\Proyecto\\Proyecto-Braian\\Back\\Proyecto-Braian\\Proyecto Braian\\Web.csproj",
+      "filePath": "C:\\Users\\Facundo\\Desktop\\Proyecto\\Proyecto-Braian\\Back\\Proyecto-Braian\\Proyecto Braian\\ProyectoBraian.csproj",
       "libraryId": "Microsoft.EntityFrameworkCore.Relational",
       "targetGraphs": [
         "net8.0"
