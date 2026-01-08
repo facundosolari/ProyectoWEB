@@ -29,7 +29,8 @@ WORKDIR /app
 # Copiar la app publicada desde la etapa de build
 COPY --from=build /app/publish .
 
-
-
 # Comando de arranque
 ENTRYPOINT ["dotnet", "ProyectoBraian.dll"]
+
+# NO poner ENV ASPNETCORE_URLS con puerto fijo
+# Railway pasará automáticamente la variable PORT
