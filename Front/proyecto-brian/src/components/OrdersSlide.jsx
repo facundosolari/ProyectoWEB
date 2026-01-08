@@ -13,7 +13,7 @@ import BillingDetailModal from "../components/BillingDetailModal";
 import "../styles/ordersSlide.css";
 
 const NO_IMAGE = "https://via.placeholder.com/150?text=Sin+imagen";
-const BASE_URL = "https://localhost:7076";
+const BASE_URL = "https://proyectoweb.railway.app";
 
 const OrdersSlide = ({ isOpen, onClose }) => {
   const { user } = useContext(UserContext);

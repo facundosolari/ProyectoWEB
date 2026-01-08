@@ -11,7 +11,7 @@ export const UserProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [sessionExpired, setSessionExpired] = useState(false);
 
-  const BASE_URL = "https://localhost:7076"; // URL base para imágenes
+  const BASE_URL = "http://proyectoweb.railway.app"; // URL base para imágenes
 
   // ====== LOGIN/REGISTRO CON GOOGLE ======
 const loginWithGoogle = async (token) => {
