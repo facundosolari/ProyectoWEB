@@ -37,7 +37,7 @@ ENV MYSQL_HOST=mysql.railway.internal
 ENV MYSQL_PORT=3306
 
 # Puerto que usa la app
-EXPOSE 5000
+EXPOSE 8080
 
 # Comando de arranque
 ENTRYPOINT ["dotnet", "ProyectoBraian.dll"]
