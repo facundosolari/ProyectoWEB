@@ -40,4 +40,4 @@ ENV MYSQL_PORT=3306
 EXPOSE 5000
 
 # Comando de arranque
-ENTRYPOINT ["dotnet", "Proyecto Braian.dll"]
+ENTRYPOINT ["dotnet", "ProyectoBraian.dll"]
