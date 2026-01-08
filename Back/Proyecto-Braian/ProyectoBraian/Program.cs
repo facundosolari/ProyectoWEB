@@ -72,9 +72,6 @@ app.MapControllers();
 // ----------------------------
 // Escuchar en el puerto dinámico de Railway
 // ----------------------------
-var port = Environment.GetEnvironmentVariable("PORT") ?? "5000";
-app.Urls.Add($"http://*:{port}");
-Console.WriteLine($"Listening on port {port}");
 
 // Ejecutar app
 app.Run();
