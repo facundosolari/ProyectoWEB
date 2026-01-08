@@ -47,6 +47,11 @@ builder.Services.AddSwaggerGen();
 // ----------------------------
 // BUILD APP
 var app = builder.Build();
+app.MapGet("/health", (ILogger<Program> log) =>
+{
+    log.LogInformation("Healthcheck requested at {time}", DateTime.UtcNow);
+    return Results.Ok("Healthy");
+});
 
 // ----------------------------
 // PIPELINE DE MIDDLEWARE
@@ -64,11 +69,7 @@ app.UseAuthorization();
 
 // ----------------------------
 // Mapear controladores
-app.MapGet("/health", (ILogger<Program> log) =>
-{
-    log.LogInformation("Healthcheck requested at {time}", DateTime.UtcNow);
-    return Results.Ok("Healthy");
-});
+
 app.MapControllers();
 
 // ----------------------------
