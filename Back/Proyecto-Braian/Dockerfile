@@ -1,10 +1,11 @@
 # =========================
-# Etapa 1: Build
+# Build
 # =========================
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 
-COPY *.sln ./
+COPY Proyecto-Braian.sln ./
+
 COPY Domain/Domain.csproj Domain/
 COPY Application/Application.csproj Application/
 COPY Infrastructure/Infrastructure.csproj Infrastructure/
@@ -13,10 +14,14 @@ COPY ProyectoBraian/ProyectoBraian.csproj ProyectoBraian/
 RUN dotnet restore ProyectoBraian/ProyectoBraian.csproj
 
 COPY . .
-RUN dotnet publish ProyectoBraian/ProyectoBraian.csproj -c Release -o /app/publish
+
+RUN dotnet publish ProyectoBraian/ProyectoBraian.csproj \
+    -c Release \
+    -o /app/publish \
+    --no-restore
 
 # =========================
-# Etapa 2: Runtime
+# Runtime
 # =========================
 FROM mcr.microsoft.com/dotnet/aspnet:8.0
 WORKDIR /app
