@@ -5,10 +5,15 @@ var builder = WebApplication.CreateBuilder(args);
 
 // ----------------------------
 // Escuchar en el puerto dinámico de Railway (ANTES de Build)
-var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
+var portStr = Environment.GetEnvironmentVariable("PORT");
+if (!int.TryParse(portStr, out var port))
+{
+    throw new Exception("PORT environment variable is not set or invalid.");
+}
+
 builder.WebHost.ConfigureKestrel(options =>
 {
-    options.ListenAnyIP(int.Parse(port)); // HTTP
+    options.ListenAnyIP(port); // HTTP dinámico, Railway lo necesita
 });
 
 // ----------------------------
