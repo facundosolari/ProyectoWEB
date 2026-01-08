@@ -29,8 +29,7 @@ WORKDIR /app
 # Copiar la app publicada desde la etapa de build
 COPY --from=build /app/publish .
 
-# Configuración de Railway: escuchar en el puerto dinámico
-ENV ASPNETCORE_URLS=http://+:8080
+
 
 # Comando de arranque
 ENTRYPOINT ["dotnet", "ProyectoBraian.dll"]
