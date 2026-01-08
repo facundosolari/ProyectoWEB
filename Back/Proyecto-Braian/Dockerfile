@@ -31,7 +31,6 @@ COPY --from=build /app/publish .
 
 # Configuración de Railway: escuchar en el puerto dinámico
 ENV ASPNETCORE_URLS=http://+:8080
-EXPOSE 8080
 
 # Comando de arranque
 ENTRYPOINT ["dotnet", "ProyectoBraian.dll"]

@@ -58,7 +58,7 @@ app.UseCors("AllowFrontend");
 app.UseStaticFiles();
 
 // HTTPS
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 
 // Autenticación y autorización
 app.UseAuthentication();
@@ -66,7 +66,7 @@ app.UseAuthorization();
 
 // Mapear controladores
 
-app.MapGet("/", () => "API online 🚀");
+app.MapGet("/health", () => Results.Ok("Healthy"));
 app.MapControllers();
 
 // ----------------------------
@@ -75,4 +75,6 @@ app.MapControllers();
 
 
 // Ejecutar app
+var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
+builder.WebHost.UseUrls($"http://*:{port}");
 app.Run();
