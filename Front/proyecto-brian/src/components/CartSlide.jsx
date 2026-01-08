@@ -5,7 +5,7 @@ import BillingDetailModal from "../components/BillingDetailModal";
 import "../styles/CartSlide.css";
 
 const NO_IMAGE = "https://via.placeholder.com/150?text=Sin+imagen";
-const BASE_URL = "http://proyectoweb.railway.app";
+const BASE_URL = "https://proyectoweb.railway.app";
 
 const CartSlide = ({ isOpen, onClose }) => {
   const { cart, increaseQuantity, decreaseQuantity, removeFromCart, clearCart } = useUser();

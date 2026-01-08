@@ -295,7 +295,7 @@ export default function EditProductModal({ onClose, onSave }) {
             <div className="photo-grid">
               {currentPhotos.map((photo, i) => (
                 <div key={i} className="photo-item">
-                  <img src={`http://proyectoweb.railway.app${photo}`} />
+                  <img src={`https://proyectoweb.railway.app${photo}`} />
                   <span
                     className="delete-btn"
                     onClick={() => handleRemovePhoto(i)}

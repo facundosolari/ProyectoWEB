@@ -15,7 +15,7 @@ const ProductCard = ({ product, onToggleStatus, onClick }) => {
   const getImageUrl = (path) => {
     if (!path) return "";
     if (path.startsWith("http")) return path;
-    return `http://proyectoweb.railway.app${path}`;
+    return `https://proyectoweb.railway.app${path}`;
   };
 
   const handleAddToCart = () => {
