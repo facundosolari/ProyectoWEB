@@ -13,7 +13,11 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowFrontend",
         policy => policy
-            .WithOrigins("http://localhost:5173") // frontend
+            .WithOrigins(
+                "http://localhost:5173", // desarrollo
+                "https://cobacha-60edd35ba-facundosolaris-projects.vercel.app", // prod Vercel
+                "https://proyectoweb.railway.app" // prod Railway
+            )
             .AllowAnyHeader()
             .AllowAnyMethod()
             .AllowCredentials() // muy importante para cookies HttpOnly
@@ -57,6 +61,13 @@ app.UseAuthorization();
 
 // Mapear controladores
 app.MapControllers();
+
+// ----------------------------
+// Escuchar en el puerto dinámico de Railway
+// ----------------------------
+var port = Environment.GetEnvironmentVariable("PORT") ?? "5000";
+app.Urls.Add($"http://*:{port}");
+Console.WriteLine($"Listening on port {port}");
 
 // Ejecutar app
 app.Run();
