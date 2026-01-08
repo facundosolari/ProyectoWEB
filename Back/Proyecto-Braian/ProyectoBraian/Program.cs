@@ -13,8 +13,12 @@ if (!int.TryParse(portStr, out var port))
 
 builder.WebHost.ConfigureKestrel(options =>
 {
-    options.ListenAnyIP(port); // HTTP dinámico, Railway lo necesita
+    // Solo escucha en el puerto dinámico
+    options.ListenAnyIP(port);
 });
+
+// Evitar que UseUrls sobrescriba algo por defecto
+builder.WebHost.UseUrls(); // dejar vacío fuerza que no haya fallback a 8080
 
 // ----------------------------
 // SERVICIOS
