@@ -4,22 +4,15 @@
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 
-# Copiar la solución
-COPY Proyecto-Braian.sln ./
-
-# Copiar proyectos (rutas EXACTAS)
+COPY *.sln ./
 COPY Domain/Domain.csproj Domain/
 COPY Application/Application.csproj Application/
 COPY Infrastructure/Infrastructure.csproj Infrastructure/
 COPY ProyectoBraian/ProyectoBraian.csproj ProyectoBraian/
 
-# Restore
 RUN dotnet restore ProyectoBraian/ProyectoBraian.csproj
 
-# Copiar todo el código
 COPY . .
-
-# Publish
 RUN dotnet publish ProyectoBraian/ProyectoBraian.csproj -c Release -o /app/publish
 
 # =========================
