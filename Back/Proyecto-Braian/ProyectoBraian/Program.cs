@@ -46,11 +46,19 @@ builder.Services.AddSwaggerGen();
 
 // ----------------------------
 // BUILD APP
+builder.Logging.ClearProviders();
+builder.Logging.AddConsole();
 var app = builder.Build();
 app.MapGet("/health", (ILogger<Program> log) =>
 {
     log.LogInformation("Healthcheck requested at {time}", DateTime.UtcNow);
     return Results.Ok("Healthy");
+});
+
+app.MapGet("/", (ILogger<Program> log) =>
+{
+    log.LogInformation("Root endpoint requested at {time}", DateTime.UtcNow);
+    return Results.Ok("API is running");
 });
 
 // ----------------------------
