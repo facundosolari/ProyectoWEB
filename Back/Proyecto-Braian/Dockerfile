@@ -30,11 +30,6 @@ WORKDIR /app
 COPY --from=build /app/publish .
 
 # Variables de entorno para MySQL (Railway)
-ENV MYSQL_DATABASE=railway
-ENV MYSQL_USER=root
-ENV MYSQL_PASSWORD=PwOjFMfsKmhsaGDCPupdgcyEknLWFhnB
-ENV MYSQL_HOST=mysql.railway.internal
-ENV MYSQL_PORT=3306
 
 # Puerto que usa la app
 EXPOSE 8080
