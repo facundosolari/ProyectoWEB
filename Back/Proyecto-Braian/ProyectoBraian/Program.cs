@@ -1,6 +1,10 @@
 ﻿using Application.Extensions;
 using Infrastructure.Extensions;
 
+var apiUrl = Environment.GetEnvironmentVariable("API_URL");
+
+// Mostrarla en consola
+Console.WriteLine($"La API que se pasó al contenedor es: {apiUrl}");
 try
 {
     var builder = WebApplication.CreateBuilder(args);
@@ -91,10 +95,7 @@ try
 }
 catch (Exception ex)
 {
-    var apiUrl = Environment.GetEnvironmentVariable("API_URL");
-
-    // Mostrarla en consola
-    Console.WriteLine($"La API que se pasó al contenedor es: {apiUrl}");
+    
     Console.WriteLine("💀 ERROR CRÍTICO EN ARRANQUE:");
     Console.WriteLine(ex.Message);
     Console.WriteLine(ex.StackTrace);
