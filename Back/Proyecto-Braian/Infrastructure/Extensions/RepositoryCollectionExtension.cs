@@ -1,12 +1,13 @@
-﻿using Domain.Interfaces;
+﻿using Application.Interfaces;
+using Domain.Interfaces;
 using Infrastructure.Context;
 using Infrastructure.Data;
+using Infrastructure.ThirdServices;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using System;
-using Application.Interfaces;
-using Infrastructure.ThirdServices;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,11 +22,11 @@ namespace Infrastructure.Extensions
             // Implementacion DbContext a la interfaz
             services.AddDbContext<DataBaseContext>(options =>
             {
-                var host = Environment.GetEnvironmentVariable("MYSQL_HOST") ?? "localhost";
+                var host = Environment.GetEnvironmentVariable("MYSQLHOST") ?? "localhost";
                 var db = Environment.GetEnvironmentVariable("MYSQL_DATABASE") ?? "proyecto_braian";
-                var user = Environment.GetEnvironmentVariable("MYSQL_USER") ?? "root";
-                var password = Environment.GetEnvironmentVariable("MYSQL_PASSWORD") ?? "solariDev135!";
-                var port = Environment.GetEnvironmentVariable("MYSQL_PORT") ?? "3306";
+                var user = Environment.GetEnvironmentVariable("MYSQLUSER") ?? "root";
+                var password = Environment.GetEnvironmentVariable("MYSQL_ROOT_PASSWORD") ?? "solariDev135!";
+                var port = Environment.GetEnvironmentVariable("MYSQLPORT") ?? "3306";
 
                 Console.WriteLine($"MYSQL_HOST={host}");
                 Console.WriteLine($"MYSQL_DATABASE={db}");
@@ -40,7 +41,7 @@ namespace Infrastructure.Extensions
                 }
 
                 var connectionString = $"Server={host};Database={db};User={user};Password={password};Port={port};";
-
+                options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
                 if (connectionString.Contains("Data Source=", StringComparison.OrdinalIgnoreCase))
                 {
                     // SQLite
