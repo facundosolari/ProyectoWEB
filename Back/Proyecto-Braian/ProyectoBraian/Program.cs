@@ -2,7 +2,7 @@
 using Infrastructure.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
-
+Console.WriteLine($"==> Railway asignó el puerto: {Environment.GetEnvironmentVariable("PORT")}");
 // ----------------------------
 // Escuchar en el puerto dinámico de Railway (ANTES de Build)
 var portStr = Environment.GetEnvironmentVariable("PORT");
@@ -10,6 +10,7 @@ if (!int.TryParse(portStr, out var port))
 {
     throw new Exception("PORT environment variable is not set or invalid.");
 }
+Console.WriteLine($"==> Railway ahora asignó el puerto: {Environment.GetEnvironmentVariable("PORT")}");
 
 builder.WebHost.ConfigureKestrel(options =>
 {
