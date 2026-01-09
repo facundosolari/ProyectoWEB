@@ -1,52 +1,74 @@
 ﻿using Application.Extensions;
 using Infrastructure.Extensions;
 
-
+try
+{
     var builder = WebApplication.CreateBuilder(args);
 
     // ----------------------------
-    // Servicios
-    builder.Services.AddControllers();
-    builder.Services.AddEndpointsApiExplorer();
-    builder.Services.AddSwaggerGen();
-    builder.Services.AddCors(options =>
+    // BLOQUE DE SERVICIOS
+    try
     {
-        options.AddPolicy("AllowFrontend",
-            policy => policy
-                .WithOrigins(
-                    "http://localhost:5173",
-                    "https://cobacha-60edd35ba-facundosolaris-projects.vercel.app",
-                    "https://proyectoweb.up.railway.app"
-                )
-                .AllowAnyHeader()
-                .AllowAnyMethod()
-                .AllowCredentials()
-        );
-    });
-    builder.Services.AddInfrastructureServices(builder.Configuration);
-    builder.Services.AddApplicationServices();
-    builder.Services.AddHttpContextAccessor();
-    builder.Services.AddJwtAuthentication(builder.Configuration);
+        builder.Services.AddControllers();
+        builder.Services.AddEndpointsApiExplorer();
+        builder.Services.AddSwaggerGen();
+        builder.Services.AddCors(options =>
+        {
+            options.AddPolicy("AllowFrontend",
+                policy => policy
+                    .WithOrigins(
+                        "http://localhost:5173",
+                        "https://cobacha-60edd35ba-facundosolaris-projects.vercel.app",
+                        "https://proyectoweb.up.railway.app"
+                    )
+                    .AllowAnyHeader()
+                    .AllowAnyMethod()
+                    .AllowCredentials()
+            );
+        });
+        builder.Services.AddInfrastructureServices(builder.Configuration);
+        builder.Services.AddApplicationServices();
+        builder.Services.AddHttpContextAccessor();
+        builder.Services.AddJwtAuthentication(builder.Configuration);
 
-    var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
+        var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
+        builder.WebHost.UseUrls($"http://0.0.0.0:{port}");
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine("❌ Error en configuración de servicios:");
+        Console.WriteLine(ex.Message);
+        Console.WriteLine(ex.StackTrace);
+    }
 
-    builder.WebHost.UseUrls($"http://0.0.0.0:{port}");  
     var app = builder.Build();
 
     // ----------------------------
-    // Middleware
-    app.UseSwagger();
-    app.UseSwaggerUI(c =>
+    // BLOQUE DE MIDDLEWARE
+    try
     {
-        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Proyecto API v1");
-        c.RoutePrefix = "api-docs";
-    });
+        app.UseSwagger();
+        app.UseSwaggerUI(c =>
+        {
+            c.SwaggerEndpoint("/swagger/v1/swagger.json", "Proyecto API v1");
+            c.RoutePrefix = "api-docs";
+        });
 
-    app.UseCors("AllowFrontend");
-    app.UseStaticFiles();
-    app.UseAuthentication();
-    app.UseAuthorization();
+        app.UseCors("AllowFrontend");
+        app.UseStaticFiles();
 
+        app.UseAuthentication();
+        app.UseAuthorization();
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine("❌ Error en configuración de middleware:");
+        Console.WriteLine(ex.Message);
+        Console.WriteLine(ex.StackTrace);
+    }
+
+    // ----------------------------
+    // RUTAS
     app.MapGet("/health", (ILogger<Program> log) =>
     {
         log.LogInformation("Healthcheck requested at {time}", DateTime.UtcNow);
@@ -56,12 +78,27 @@ using Infrastructure.Extensions;
     app.MapControllers();
 
     // ----------------------------
-    app.Run(); // Bloqueante, el contenedor sigue vivo
+    try
+    {
+        app.Run();
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine("❌ Error al iniciar la app:");
+        Console.WriteLine(ex.Message);
+        Console.WriteLine(ex.StackTrace);
+    }
+}
+catch (Exception ex)
+{
+    Console.WriteLine("💀 ERROR CRÍTICO EN ARRANQUE:");
+    Console.WriteLine(ex.Message);
+    Console.WriteLine(ex.StackTrace);
+}
 
+// Loggear el error crítico
 
-    // Loggear el error crítico
-    Console.WriteLine("ERROR CRÍTICO EN ARRANQUE: ");
-   // Environment.Exit(1); // Termina el proceso con código 1
+// Environment.Exit(1); // Termina el proceso con código 1
 
 
 // ----------------------------
