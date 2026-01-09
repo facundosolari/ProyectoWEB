@@ -20,5 +20,11 @@ WORKDIR /app
 
 COPY --from=build /app/publish .
 ENV API_URL=https://proyectoweb.up.railway.app
+ENV MYSQLHOST="mysql-production-2a45.up.railway.app"
+ENV MYSQLDATABASE="railway"
+ENV MYSQLUSER="root"
+ENV MYSQL_ROOT_PASSWORD="PwOjFMfsKmhsaGDCPupdgcyEknLWFhnB"
+ENV MYSQLPORT="3306"
+ENV MYSQLPASSWORD="PwOjFMfsKmhsaGDCPupdgcyEknLWFhnB"
 # NO fijes ASPNETCORE_URLS ni el puerto
 ENTRYPOINT ["dotnet", "ProyectoBraian.dll"]
