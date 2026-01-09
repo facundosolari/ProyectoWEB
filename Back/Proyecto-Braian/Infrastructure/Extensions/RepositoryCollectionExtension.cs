@@ -22,16 +22,17 @@ namespace Infrastructure.Extensions
             // Implementacion DbContext a la interfaz
             services.AddDbContext<DataBaseContext>(options =>
             {
-                var host = Environment.GetEnvironmentVariable("MYSQLHOST") ?? "localhost";
-                var db = Environment.GetEnvironmentVariable("MYSQL_DATABASE") ?? "proyecto_braian";
-                var user = Environment.GetEnvironmentVariable("MYSQLUSER") ?? "root";
-                var password = Environment.GetEnvironmentVariable("MYSQL_ROOT_PASSWORD") ?? "solariDev135!";
+                var host = Environment.GetEnvironmentVariable("MYSQLHOST");
+                var db = Environment.GetEnvironmentVariable("MYSQLDATABASE");
+                var user = Environment.GetEnvironmentVariable("MYSQLUSER");
+                var password = Environment.GetEnvironmentVariable("MYSQLPASSWORD") ??
+               Environment.GetEnvironmentVariable("MYSQL_ROOT_PASSWORD");
                 var port = Environment.GetEnvironmentVariable("MYSQLPORT") ?? "3306";
 
-                Console.WriteLine($"MYSQL_HOST={host}");
-                Console.WriteLine($"MYSQL_DATABASE={db}");
-                Console.WriteLine($"MYSQL_USER={user}");
-                Console.WriteLine($"MYSQL_PORT={port}");
+                Console.WriteLine($"MYSQLHOST={host}");
+                Console.WriteLine($"MYSQLDATABASE={db}");
+                Console.WriteLine($"MYSQLUSER={user}");
+                Console.WriteLine($"MYSQLPORT={port}");
 
                 if (string.IsNullOrEmpty(host) || string.IsNullOrEmpty(db) ||
                     string.IsNullOrEmpty(user) || string.IsNullOrEmpty(password) ||
