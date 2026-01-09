@@ -60,7 +60,7 @@ catch (Exception ex)
 {
     // Loggear el error crítico
     Console.WriteLine("ERROR CRÍTICO EN ARRANQUE: " + ex);
-    Environment.Exit(1); // Termina el proceso con código 1
+   // Environment.Exit(1); // Termina el proceso con código 1
 }
 
 // ----------------------------
