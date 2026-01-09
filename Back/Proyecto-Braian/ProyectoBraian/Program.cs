@@ -85,6 +85,7 @@ try
     try
     {
         app.Run();
+        Console.WriteLine("✅ App lista, esperando requests...");
     }
     catch (Exception ex)
     {
