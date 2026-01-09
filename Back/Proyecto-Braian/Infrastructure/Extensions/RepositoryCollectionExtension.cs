@@ -16,22 +16,17 @@ namespace Infrastructure.Extensions
         {
             services.AddDbContext<DataBaseContext>(options =>
             {
-                // Intentar usar variables de entorno (Railway) primero
-                var host = Environment.GetEnvironmentVariable("MYSQLHOST") ?? configuration["ConnectionStrings:Host"] ?? "localhost";
-                var db = Environment.GetEnvironmentVariable("MYSQLDATABASE") ?? configuration["ConnectionStrings:Database"] ?? "proyecto_braian";
-                var user = Environment.GetEnvironmentVariable("MYSQLUSER") ?? configuration["ConnectionStrings:User"] ?? "root";
-                var password = Environment.GetEnvironmentVariable("MYSQL_ROOT_PASSWORD") ?? configuration["ConnectionStrings:Password"] ?? "solariDev135!";
-                var port = Environment.GetEnvironmentVariable("MYSQLPORT") ?? configuration["ConnectionStrings:Port"] ?? "3306";
+                var connectionString =
+                    Environment.GetEnvironmentVariable("DATABASE_URL")
+                    ?? configuration.GetConnectionString("DefaultConnection");
 
-                Console.WriteLine($"MYSQLHOST={host}");
-                Console.WriteLine($"MYSQLDATABASE={db}");
-                Console.WriteLine($"MYSQLUSER={user}");
-                Console.WriteLine($"MYSQLPORT={port}");
+                if (string.IsNullOrWhiteSpace(connectionString))
+                    throw new Exception("Connection string no encontrada");
 
-                // Construir connection string
-                var connectionString = $"Server={host};Database={db};User={user};Password={password};Port={port};";
-
-                options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
+                options.UseMySql(
+                    connectionString,
+                    new MySqlServerVersion(new Version(8, 0, 36))
+                );
             });
 
             // ----------------------------
