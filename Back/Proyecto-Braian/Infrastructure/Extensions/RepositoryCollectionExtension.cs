@@ -21,7 +21,11 @@ namespace Infrastructure.Extensions
             // Implementacion DbContext a la interfaz
             services.AddDbContext<DataBaseContext>(options =>
             {
-                var connectionString = configuration.GetConnectionString("DefaultConnection");
+                var connectionString = $"Server={Environment.GetEnvironmentVariable("MYSQL_HOST")};" +
+                       $"Database={Environment.GetEnvironmentVariable("MYSQL_DATABASE")};" +
+                       $"User={Environment.GetEnvironmentVariable("MYSQL_USER")};" +
+                       $"Password={Environment.GetEnvironmentVariable("MYSQL_PASSWORD")};" +
+                       $"Port={Environment.GetEnvironmentVariable("MYSQL_PORT")};";
 
                 if (connectionString.Contains("Data Source=", StringComparison.OrdinalIgnoreCase))
                 {

@@ -3,8 +3,7 @@ using Infrastructure.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// ----------------------------
-// Escuchar en el puerto dinámico de Railway (ANTES de Build)
+// Puerto dinámico de Railway
 var portStr = Environment.GetEnvironmentVariable("PORT");
 if (!int.TryParse(portStr, out var port))
 {
@@ -13,57 +12,51 @@ if (!int.TryParse(portStr, out var port))
 
 builder.WebHost.ConfigureKestrel(options =>
 {
-    // Solo escucha en el puerto dinámico
     options.ListenAnyIP(port);
 });
 
-// Evitar que UseUrls sobrescriba algo por defecto
-builder.WebHost.UseUrls(); // dejar vacío fuerza que no haya fallback a 8080
-
-// ----------------------------
-// SERVICIOS
+// Servicios
 builder.Services.AddControllers();
-
-// CORS para frontend (cookies necesitan AllowCredentials)
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowFrontend",
         policy => policy
             .WithOrigins(
-                "http://localhost:5173", // desarrollo
-                "https://cobacha-60edd35ba-facundosolaris-projects.vercel.app", // prod Vercel
-                "https://proyectoweb.up.railway.app" // prod Railway
+                "http://localhost:5173",
+                "https://cobacha-60edd35ba-facundosolaris-projects.vercel.app",
+                "https://proyectoweb.up.railway.app"
             )
             .AllowAnyHeader()
             .AllowAnyMethod()
-            .AllowCredentials() // muy importante para cookies HttpOnly
+            .AllowCredentials()
     );
 });
 
-// ----------------------------
-// Infraestructura y servicios
 builder.Services.AddInfrastructureServices(builder.Configuration);
 builder.Services.AddApplicationServices();
 builder.Services.AddHttpContextAccessor();
 
-// ----------------------------
-// JWT Authentication
 builder.Services.AddJwtAuthentication(builder.Configuration);
 
-// ----------------------------
-// Swagger
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// ----------------------------
-// BUILD APP
 builder.Logging.ClearProviders();
 builder.Logging.AddConsole();
+
 var app = builder.Build();
 
+// Middleware
+app.UseSwagger();
+app.UseSwaggerUI();
 
-app.Urls.Add($"http://*:{port}");
-// ----------------------------
+app.UseCors("AllowFrontend");
+
+app.UseStaticFiles();
+
+app.UseAuthentication();
+app.UseAuthorization();
+
 // Endpoints básicos
 app.MapGet("/health", (ILogger<Program> log) =>
 {
@@ -77,24 +70,8 @@ app.MapGet("/", (ILogger<Program> log) =>
     return Results.Ok("API is running");
 });
 
-// ----------------------------
-// PIPELINE DE MIDDLEWARE
-app.UseSwagger();
-app.UseSwaggerUI();
-
-app.UseCors("AllowFrontend");
-
-app.UseStaticFiles();
-
-//app.UseHttpsRedirection();
-
-app.UseAuthentication();
-app.UseAuthorization();
-
-// ----------------------------
 // Mapear controladores
 app.MapControllers();
 
-// ----------------------------
-// Ejecutar app
+// Ejecutar
 app.Run();
