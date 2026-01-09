@@ -6,12 +6,7 @@ using Infrastructure.ThirdServices;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Infrastructure.Extensions
 {
@@ -21,29 +16,25 @@ namespace Infrastructure.Extensions
         {
             services.AddDbContext<DataBaseContext>(options =>
             {
-                var host = Environment.GetEnvironmentVariable("MYSQLHOST");
-                var db = Environment.GetEnvironmentVariable("MYSQLDATABASE");
-                var user = Environment.GetEnvironmentVariable("MYSQLUSER");
-                var password = Environment.GetEnvironmentVariable("MYSQL_ROOT_PASSWORD");
-                var port = Environment.GetEnvironmentVariable("MYSQLPORT") ?? "3306";
+                // Intentar usar variables de entorno (Railway) primero
+                var host = Environment.GetEnvironmentVariable("MYSQLHOST") ?? configuration["ConnectionStrings:Host"] ?? "localhost";
+                var db = Environment.GetEnvironmentVariable("MYSQLDATABASE") ?? configuration["ConnectionStrings:Database"] ?? "proyecto_braian";
+                var user = Environment.GetEnvironmentVariable("MYSQLUSER") ?? configuration["ConnectionStrings:User"] ?? "root";
+                var password = Environment.GetEnvironmentVariable("MYSQL_ROOT_PASSWORD") ?? configuration["ConnectionStrings:Password"] ?? "solariDev135!";
+                var port = Environment.GetEnvironmentVariable("MYSQLPORT") ?? configuration["ConnectionStrings:Port"] ?? "3306";
 
                 Console.WriteLine($"MYSQLHOST={host}");
                 Console.WriteLine($"MYSQLDATABASE={db}");
                 Console.WriteLine($"MYSQLUSER={user}");
                 Console.WriteLine($"MYSQLPORT={port}");
 
-                if (string.IsNullOrEmpty(host) || string.IsNullOrEmpty(db) ||
-                    string.IsNullOrEmpty(user) || string.IsNullOrEmpty(password) ||
-                    string.IsNullOrEmpty(port))
-                {
-                    throw new Exception("One or more MySQL environment variables are not set!");
-                }
-
+                // Construir connection string
                 var connectionString = $"Server={host};Database={db};User={user};Password={password};Port={port};";
 
                 options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
             });
 
+            // ----------------------------
             // Repositorios
             services.AddScoped<IAuthenticationService, AuthenticationService>();
             services.AddScoped<IGoogleTokenValidator, GoogleTokenValidator>();

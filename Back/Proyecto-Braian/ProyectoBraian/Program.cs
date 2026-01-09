@@ -3,20 +3,32 @@ using Infrastructure.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Puerto dinámico de Railway
+// ----------------------------
+// Puerto dinámico de Railway o fallback local
+int port;
 var portStr = Environment.GetEnvironmentVariable("PORT");
-if (!int.TryParse(portStr, out var port))
+if (!string.IsNullOrEmpty(portStr) && int.TryParse(portStr, out var parsedPort))
 {
-    throw new Exception("PORT environment variable is not set or invalid.");
+    port = parsedPort;
+}
+else
+{
+    port = 5000; // Puerto local de fallback
+    Console.WriteLine("No PORT env variable found. Using local port 5000.");
 }
 
+// Configurar Kestrel
 builder.WebHost.ConfigureKestrel(options =>
 {
     options.ListenAnyIP(port);
 });
 
+// ----------------------------
 // Servicios
 builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowFrontend",
@@ -32,24 +44,34 @@ builder.Services.AddCors(options =>
     );
 });
 
+// ----------------------------
+// Infrastructure Services (usa tu extensión tal cual)
 builder.Services.AddInfrastructureServices(builder.Configuration);
+
 builder.Services.AddApplicationServices();
 builder.Services.AddHttpContextAccessor();
-
 builder.Services.AddJwtAuthentication(builder.Configuration);
 
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
+// Logging
 builder.Logging.ClearProviders();
 builder.Logging.AddConsole();
 
+// ----------------------------
+// Middleware
 var app = builder.Build();
 
-// Middleware
-app.UseSwagger();
-app.UseSwaggerUI();
+// Swagger solo para desarrollo
+if (port == 5000)
+{
+    app.UseSwagger();
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Proyecto API v1");
+        c.RoutePrefix = "api-docs"; // URL: /api-docs
+    });
+}
 
+// CORS
 app.UseCors("AllowFrontend");
 
 app.UseStaticFiles();
@@ -57,6 +79,7 @@ app.UseStaticFiles();
 app.UseAuthentication();
 app.UseAuthorization();
 
+// ----------------------------
 // Endpoints básicos
 app.MapGet("/health", (ILogger<Program> log) =>
 {
@@ -73,5 +96,26 @@ app.MapGet("/", (ILogger<Program> log) =>
 // Mapear controladores
 app.MapControllers();
 
+// ----------------------------
+// Abrir Swagger automáticamente solo en local
+if (port == 5000)
+{
+    var url = $"http://localhost:{port}/api-docs";
+    try
+    {
+        var psi = new System.Diagnostics.ProcessStartInfo
+        {
+            FileName = url,
+            UseShellExecute = true
+        };
+        System.Diagnostics.Process.Start(psi);
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine("No se pudo abrir el navegador automáticamente: " + ex.Message);
+    }
+}
+
+// ----------------------------
 // Ejecutar
 app.Run();
