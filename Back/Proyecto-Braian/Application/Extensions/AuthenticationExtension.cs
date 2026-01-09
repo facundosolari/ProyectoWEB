@@ -32,6 +32,16 @@ namespace Application.Extensions
                             return Task.CompletedTask;
                         }
                     };
+                    var secret = configuration["AuthenticationServiceOptions:SecretForKey"];
+                    var issuer = configuration["AuthenticationServiceOptions:Issuer"];
+                    var audience = configuration["AuthenticationServiceOptions:Audience"];
+
+                    if (string.IsNullOrWhiteSpace(secret) ||
+                        string.IsNullOrWhiteSpace(issuer) ||
+                        string.IsNullOrWhiteSpace(audience))
+                    {
+                        throw new Exception("❌ JWT no configurado correctamente (variables de entorno faltantes)");
+                    }
 
                     options.TokenValidationParameters = new TokenValidationParameters
                     {
@@ -47,6 +57,8 @@ namespace Application.Extensions
                         )
                     };
                 });
+
+
 
             // Policies
             services.AddAuthorization(options =>
