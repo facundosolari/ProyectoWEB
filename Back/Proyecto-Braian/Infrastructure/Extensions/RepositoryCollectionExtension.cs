@@ -19,14 +19,12 @@ namespace Infrastructure.Extensions
     {
         public static IServiceCollection AddInfrastructureServices(this IServiceCollection services, IConfiguration configuration)
         {
-            // Implementacion DbContext a la interfaz
             services.AddDbContext<DataBaseContext>(options =>
             {
                 var host = Environment.GetEnvironmentVariable("MYSQLHOST");
                 var db = Environment.GetEnvironmentVariable("MYSQLDATABASE");
                 var user = Environment.GetEnvironmentVariable("MYSQLUSER");
-                var password = Environment.GetEnvironmentVariable("MYSQLPASSWORD") ??
-               Environment.GetEnvironmentVariable("MYSQL_ROOT_PASSWORD");
+                var password = Environment.GetEnvironmentVariable("MYSQL_ROOT_PASSWORD");
                 var port = Environment.GetEnvironmentVariable("MYSQLPORT") ?? "3306";
 
                 Console.WriteLine($"MYSQLHOST={host}");
@@ -42,24 +40,12 @@ namespace Infrastructure.Extensions
                 }
 
                 var connectionString = $"Server={host};Database={db};User={user};Password={password};Port={port};";
-                options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
-                if (connectionString.Contains("Data Source=", StringComparison.OrdinalIgnoreCase))
-                {
-                    // SQLite
-                    options.UseSqlite(connectionString);
-                }
-                else
-                {
-                    // MySQL
-                    options.UseMySql(
-                        connectionString,
-                        ServerVersion.AutoDetect(connectionString)
-                    );
-                }
-            });
-            // Implementacion Repositorios a la interfaz
 
-            services.AddScoped<IAuthenticationService,AuthenticationService>();
+                options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
+            });
+
+            // Repositorios
+            services.AddScoped<IAuthenticationService, AuthenticationService>();
             services.AddScoped<IGoogleTokenValidator, GoogleTokenValidator>();
             services.AddScoped<IOrderMessageRepository, OrderMessageRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
@@ -71,7 +57,6 @@ namespace Infrastructure.Extensions
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<IDescuentoRepository, DescuentoRepository>();
             services.AddScoped<IReglaDescuentoRepository, ReglaDescuentoRepository>();
-
 
             return services;
         }
