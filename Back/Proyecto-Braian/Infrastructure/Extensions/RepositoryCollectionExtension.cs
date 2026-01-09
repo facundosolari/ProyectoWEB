@@ -17,8 +17,23 @@ namespace Infrastructure.Extensions
             services.AddDbContext<DataBaseContext>(options =>
             {
                 var connectionString =
-                    Environment.GetEnvironmentVariable("DATABASE_URL")
-                    ?? configuration.GetConnectionString("DefaultConnection");
+                    configuration.GetConnectionString("DefaultConnection");
+
+                // Railway MySQL
+                if (string.IsNullOrWhiteSpace(connectionString))
+                {
+                    var host = Environment.GetEnvironmentVariable("MYSQLHOST");
+                    var db = Environment.GetEnvironmentVariable("MYSQLDATABASE");
+                    var user = Environment.GetEnvironmentVariable("MYSQLUSER");
+                    var pass = Environment.GetEnvironmentVariable("MYSQLPASSWORD");
+                    var port = Environment.GetEnvironmentVariable("MYSQLPORT") ?? "3306";
+
+                    if (!string.IsNullOrWhiteSpace(host))
+                    {
+                        connectionString =
+                            $"Server={host};Port={port};Database={db};User={user};Password={pass};";
+                    }
+                }
 
                 if (string.IsNullOrWhiteSpace(connectionString))
                     throw new Exception("Connection string no encontrada");

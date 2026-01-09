@@ -1,8 +1,7 @@
 ﻿using Application.Extensions;
 using Infrastructure.Extensions;
 
-try
-{
+
     var builder = WebApplication.CreateBuilder(args);
 
     // ----------------------------
@@ -55,13 +54,12 @@ try
 
     // ----------------------------
     app.Run(); // Bloqueante, el contenedor sigue vivo
-}
-catch (Exception ex)
-{
+
+
     // Loggear el error crítico
-    Console.WriteLine("ERROR CRÍTICO EN ARRANQUE: " + ex);
+    Console.WriteLine("ERROR CRÍTICO EN ARRANQUE: ");
    // Environment.Exit(1); // Termina el proceso con código 1
-}
+
 
 // ----------------------------
 // Abrir Swagger automáticamente solo en local
