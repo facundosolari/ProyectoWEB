@@ -98,6 +98,7 @@ app.MapControllers();
 
 // ----------------------------
 // Abrir Swagger automáticamente solo en local
+/*
 if (port == 5000)
 {
     var url = $"http://localhost:{port}/api-docs";
@@ -115,6 +116,7 @@ if (port == 5000)
         Console.WriteLine("No se pudo abrir el navegador automáticamente: " + ex.Message);
     }
 }
+*/
 
 // ----------------------------
 // Ejecutar
