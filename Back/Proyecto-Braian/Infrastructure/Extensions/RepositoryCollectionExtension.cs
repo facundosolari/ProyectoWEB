@@ -21,11 +21,25 @@ namespace Infrastructure.Extensions
             // Implementacion DbContext a la interfaz
             services.AddDbContext<DataBaseContext>(options =>
             {
-                var connectionString = $"Server={Environment.GetEnvironmentVariable("MYSQL_HOST")};" +
-                       $"Database={Environment.GetEnvironmentVariable("MYSQL_DATABASE")};" +
-                       $"User={Environment.GetEnvironmentVariable("MYSQL_USER")};" +
-                       $"Password={Environment.GetEnvironmentVariable("MYSQL_PASSWORD")};" +
-                       $"Port={Environment.GetEnvironmentVariable("MYSQL_PORT")};";
+                var host = Environment.GetEnvironmentVariable("MYSQL_HOST") ?? "localhost";
+                var db = Environment.GetEnvironmentVariable("MYSQL_DATABASE") ?? "proyecto_braian";
+                var user = Environment.GetEnvironmentVariable("MYSQL_USER") ?? "root";
+                var password = Environment.GetEnvironmentVariable("MYSQL_PASSWORD") ?? "solariDev135!";
+                var port = Environment.GetEnvironmentVariable("MYSQL_PORT") ?? "3306";
+
+                Console.WriteLine($"MYSQL_HOST={host}");
+                Console.WriteLine($"MYSQL_DATABASE={db}");
+                Console.WriteLine($"MYSQL_USER={user}");
+                Console.WriteLine($"MYSQL_PORT={port}");
+
+                if (string.IsNullOrEmpty(host) || string.IsNullOrEmpty(db) ||
+                    string.IsNullOrEmpty(user) || string.IsNullOrEmpty(password) ||
+                    string.IsNullOrEmpty(port))
+                {
+                    throw new Exception("One or more MySQL environment variables are not set!");
+                }
+
+                var connectionString = $"Server={host};Database={db};User={user};Password={password};Port={port};";
 
                 if (connectionString.Contains("Data Source=", StringComparison.OrdinalIgnoreCase))
                 {
