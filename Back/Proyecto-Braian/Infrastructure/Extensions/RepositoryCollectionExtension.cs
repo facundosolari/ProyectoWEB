@@ -16,32 +16,45 @@ namespace Infrastructure.Extensions
         {
             services.AddDbContext<DataBaseContext>(options =>
             {
-                var connectionString =
-                    configuration.GetConnectionString("DefaultConnection");
-
-                // Railway MySQL
-                if (string.IsNullOrWhiteSpace(connectionString))
+                try
                 {
-                    var host = Environment.GetEnvironmentVariable("MYSQLHOST");
-                    var db = Environment.GetEnvironmentVariable("MYSQLDATABASE");
-                    var user = Environment.GetEnvironmentVariable("MYSQLUSER");
-                    var pass = Environment.GetEnvironmentVariable("MYSQLPASSWORD");
-                    var port = Environment.GetEnvironmentVariable("MYSQLPORT") ?? "3306";
+                    // Intenta tomar la connection string del appsettings
+                    var connectionString = configuration.GetConnectionString("DefaultConnection");
 
-                    if (!string.IsNullOrWhiteSpace(host))
+                    // Si no existe, la construimos desde variables de entorno (Railway)
+                    if (string.IsNullOrWhiteSpace(connectionString))
                     {
-                        connectionString =
-                            $"Server={host};Port={port};Database={db};User={user};Password={pass};";
+                        var host = Environment.GetEnvironmentVariable("MYSQLHOST");
+                        var db = Environment.GetEnvironmentVariable("MYSQLDATABASE");
+                        var user = Environment.GetEnvironmentVariable("MYSQLUSER");
+                        var pass = Environment.GetEnvironmentVariable("MYSQLPASSWORD");
+                        var port = Environment.GetEnvironmentVariable("MYSQLPORT") ?? "3306";
+
+                        if (!string.IsNullOrWhiteSpace(host))
+                        {
+                            connectionString = $"Server={host};Port={port};Database={db};User={user};Password={pass};";
+                        }
                     }
+
+                    // Si sigue vacía, logueamos y lanzamos excepción
+                    if (string.IsNullOrWhiteSpace(connectionString))
+                    {
+                        Console.WriteLine("❌ Connection string no encontrada, revisa tus variables de entorno.");
+                        throw new Exception("Connection string no encontrada");
+                    }
+
+                    // Logueamos info de la DB (sin la contraseña)
+                    Console.WriteLine($"✅ DB Connection: Server={Environment.GetEnvironmentVariable("MYSQLHOST")};Port={Environment.GetEnvironmentVariable("MYSQLPORT")};Database={Environment.GetEnvironmentVariable("MYSQLDATABASE")};User={Environment.GetEnvironmentVariable("MYSQLUSER")};Password=*****");
+
+                    // Configuramos DbContext con AutoDetect para mayor flexibilidad
+                    options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
                 }
-
-                if (string.IsNullOrWhiteSpace(connectionString))
-                    throw new Exception("Connection string no encontrada");
-
-                options.UseMySql(
-                    connectionString,
-                    new MySqlServerVersion(new Version(8, 0, 36))
-                );
+                catch (Exception ex)
+                {
+                    Console.WriteLine("❌ Error al configurar DbContext:");
+                    Console.WriteLine(ex.Message);
+                    Console.WriteLine(ex.StackTrace);
+                }
             });
 
             // ----------------------------
