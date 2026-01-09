@@ -19,6 +19,6 @@ FROM mcr.microsoft.com/dotnet/aspnet:8.0
 WORKDIR /app
 
 COPY --from=build /app/publish .
-
+ENV API_URL=https://proyectoweb.up.railway.app
 # NO fijes ASPNETCORE_URLS ni el puerto
 ENTRYPOINT ["dotnet", "ProyectoBraian.dll"]
