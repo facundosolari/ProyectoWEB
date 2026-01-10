@@ -1,14 +1,4 @@
 ﻿using Application.Extensions;
-using Infrastructure.Extensions;
-
-Tu Program.cs está muy bien, pero el orden de los componentes está causando que Railway detenga el contenedor. El problema es que el Healthcheck y el Swagger están quedando "atrapados" detrás de la lógica de autenticación o rutas mal configuradas para producción.
-
-Aquí tienes la versión adaptada para que Railway lo acepte, el contenedor se quede Online y puedas ver el Swagger directamente.
-
-Program.cs Adaptado
-C#
-
-using Application.Extensions;
 using Infrastructure.Context;
 using Infrastructure.Extensions;
 using Microsoft.EntityFrameworkCore;
@@ -59,10 +49,10 @@ try
     // ----------------------------
     // 1. RUTAS DE SALUD (PRIMERO QUE NADA)
     // ----------------------------
-    // Ponemos esto antes que cualquier middleware de Auth o StaticFiles
+    // Importante: Antes que Auth para que Railway pueda entrar sin token
     app.MapGet("/health", (ILogger<Program> log) =>
     {
-        log.LogInformation("Healthcheck manual solicitado a las {time}", DateTime.UtcNow);
+        log.LogInformation("Healthcheck manual solicitado");
         return Results.Ok(new { Status = "Healthy", Port = port });
     });
 
@@ -71,13 +61,12 @@ try
     // ----------------------------
     // 2. CONFIGURACIÓN DE SWAGGER
     // ----------------------------
-    // Forzamos Swagger en producción para poder testear la DB
+    // Forzamos Swagger en producción para visualizar la API
     app.UseSwagger();
     app.UseSwaggerUI(c =>
     {
         c.SwaggerEndpoint("/swagger/v1/swagger.json", "Proyecto API v1");
-        // Dejamos RoutePrefix vacío para que cargue en la raíz (proyectoweb.up.railway.app/)
-        c.RoutePrefix = string.Empty;
+        c.RoutePrefix = string.Empty; // Carga Swagger en la raíz
     });
 
     // ----------------------------
