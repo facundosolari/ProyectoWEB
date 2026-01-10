@@ -46,14 +46,14 @@ namespace Infrastructure.Extensions
                     throw new Exception("❌ Error: No se encontró una cadena de conexión válida.");
                 }
 
-                var serverVersion = ServerVersion.AutoDetect(connectionString);
+                var serverVersion = new MySqlServerVersion(new Version(9, 4, 0));
 
                 options.UseMySql(connectionString, serverVersion, b =>
                 {
                     b.MigrationsAssembly("Infrastructure");
                     b.EnableRetryOnFailure(
-                        maxRetryCount: 5,
-                        maxRetryDelay: TimeSpan.FromSeconds(10),
+                        maxRetryCount: 10, // Aumentamos reintentos
+                        maxRetryDelay: TimeSpan.FromSeconds(5),
                         errorNumbersToAdd: null
                     );
                 });
