@@ -16,44 +16,44 @@ namespace Infrastructure.Extensions
         {
             services.AddDbContext<DataBaseContext>(options =>
             {
-                // 1. Intentamos obtener la cadena base del appsettings.json
-                var connectionString = configuration.GetConnectionString("DefaultConnection");
+                // 1. Intentamos obtener las variables de entorno (Prioridad para Railway)
+                // Usamos el operador ?? para buscar nombres con y sin guion bajo
+                var host = Environment.GetEnvironmentVariable("MYSQLHOST") ?? Environment.GetEnvironmentVariable("MYSQL_HOST") ?? "mysql";
+                var port = Environment.GetEnvironmentVariable("MYSQLPORT") ?? Environment.GetEnvironmentVariable("MYSQL_PORT") ?? "3306";
+                var user = Environment.GetEnvironmentVariable("MYSQLUSER") ?? Environment.GetEnvironmentVariable("MYSQL_USER") ?? "root";
+                var pass = Environment.GetEnvironmentVariable("MYSQLPASSWORD") ?? Environment.GetEnvironmentVariable("MYSQL_PASSWORD");
+                var db = Environment.GetEnvironmentVariable("MYSQLDATABASE") ?? Environment.GetEnvironmentVariable("MYSQL_DATABASE") ?? "railway";
 
-                // 2. Tomamos las variables de entorno (útil para Railway/Producción)
-                var host = Environment.GetEnvironmentVariable("MYSQLHOST");
-                var port = Environment.GetEnvironmentVariable("MYSQLPORT") ?? "3306";
-                var user = Environment.GetEnvironmentVariable("MYSQLUSER");
-                var pass = Environment.GetEnvironmentVariable("MYSQLPASSWORD");
-                var db = Environment.GetEnvironmentVariable("MYSQLDATABASE");
+                string connectionString;
 
-                // 3. Si las variables de entorno existen, construimos la cadena con ellas
-                if (!string.IsNullOrWhiteSpace(host) && !string.IsNullOrWhiteSpace(user))
+                // 2. Si existe password (estamos en la nube o configurado), construimos la cadena
+                if (!string.IsNullOrWhiteSpace(pass))
                 {
                     connectionString = $"Server={host};Port={port};Database={db};User={user};Password={pass};Connect Timeout=120;";
-                    Console.WriteLine($"✅ Usando variables de entorno - DB Connection: Server={host};Port={port};Database={db};User={user};Password=*****");
+
+                    // LOG CRÍTICO: Esto nos dirá en Railway qué valores está leyendo realmente
+                    Console.WriteLine($"🚀 INTENTO CONEXIÓN: Host={host} | Port={port} | DB={db} | User={user}");
                 }
                 else
                 {
-                    Console.WriteLine("ℹ️ Usando ConnectionString de appsettings.json");
+                    // 3. Fallback al appsettings.json si no hay variables de entorno (Local)
+                    connectionString = configuration.GetConnectionString("DefaultConnection");
+                    Console.WriteLine("ℹ️ MODO LOCAL: Usando ConnectionString de appsettings.json");
                 }
 
-                // 4. Verificación de seguridad
                 if (string.IsNullOrWhiteSpace(connectionString))
                 {
                     throw new Exception("❌ Error: No se encontró una cadena de conexión válida.");
                 }
 
-                // 5. Configuración de versión manual
                 var serverVersion = new MySqlServerVersion(new Version(8, 0, 30));
 
                 options.UseMySql(connectionString, serverVersion, b =>
                 {
                     b.MigrationsAssembly("Infrastructure");
-
-                    // --- NUEVOS CAMBIOS PARA RESILIENCIA ---
                     b.EnableRetryOnFailure(
-                        maxRetryCount: 5,               // Reintenta hasta 5 veces
-                        maxRetryDelay: TimeSpan.FromSeconds(10), // Espera entre reintentos
+                        maxRetryCount: 5,
+                        maxRetryDelay: TimeSpan.FromSeconds(10),
                         errorNumbersToAdd: null
                     );
                 });
@@ -61,6 +61,7 @@ namespace Infrastructure.Extensions
 
             // ----------------------------
             // Repositorios
+            // ----------------------------
             services.AddScoped<IAuthenticationService, AuthenticationService>();
             services.AddScoped<IGoogleTokenValidator, GoogleTokenValidator>();
             services.AddScoped<IOrderMessageRepository, OrderMessageRepository>();
