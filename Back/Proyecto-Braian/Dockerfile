@@ -1,40 +1,30 @@
-# Etapa base: runtime
-FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
-WORKDIR /app
-EXPOSE 8080
-EXPOSE 8081
-
-# Etapa de build
+# Etapa 1: Build
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
-ARG BUILD_CONFIGURATION=Release
-WORKDIR /ProyectoBraian
+WORKDIR /src
 
-# Copiar solo los archivos .csproj primero para aprovechar cache
-COPY ["ProyectoBraian.Application.csproj", "ProyectoBraian.Application/"]
-COPY ["ProyectoBraian.Infrastructure.csproj", "ProyectoBraian.Infrastructure/"]
-COPY ["ProyectoBraian.Domain.csproj", "ProyectoBraian.Domain/"]
-COPY ["ProyectoBraian/ProyectoBraian/ProyectoBraian.csproj", "ProyectoBraian.ProyectoBraian/"]
+COPY Proyecto-Braian.sln ./
+COPY Domain/Domain.csproj Domain/
+COPY Application/Application.csproj Application/
+COPY Infrastructure/Infrastructure.csproj Infrastructure/
+COPY ProyectoBraian/ProyectoBraian.csproj ProyectoBraian/
 
-# Restaurar paquetes
-RUN dotnet restore "ProyectoBraian.Application/Application.csproj"
-RUN dotnet restore "ProyectoBraian.Infrastructure/Infrastructure.csproj"
-RUN dotnet restore "ProyectoBraian.ProyectoBraian/ProyectoBraian.csproj"
-RUN dotnet restore "ProyectoBraian.Domain/Domain.csproj"
+RUN dotnet restore ProyectoBraian/ProyectoBraian.csproj
 
-# Copiar todo el código
 COPY . .
 
-# Construir proyecto Web
-WORKDIR "/ProyectoBraian/ProyectoBraian.ProyectoBraian"
-RUN dotnet build "ProyectoBraian.csproj" -c $BUILD_CONFIGURATION -o /app/build
+RUN dotnet publish ProyectoBraian/ProyectoBraian.csproj -c Release -o /app/publish
 
-# Publicar
-FROM build AS publish
-ARG BUILD_CONFIGURATION=Release
-RUN dotnet publish "ProyectoBraian.csproj" -c $BUILD_CONFIGURATION -o /app/publish
-
-# Imagen final
-FROM base AS final
+# Etapa 2: Runtime
+FROM mcr.microsoft.com/dotnet/aspnet:8.0
 WORKDIR /app
-COPY --from=publish /app/publish .
+
+COPY --from=build /app/publish .
+ENV API_URL=https://proyectoweb.up.railway.app
+ENV MYSQLHOST="mysql-production-2a45.up.railway.app"
+ENV MYSQLDATABASE="railway"
+ENV MYSQLUSER="root"
+ENV MYSQL_ROOT_PASSWORD="PwOjFMfsKmhsaGDCPupdgcyEknLWFhnB"
+ENV MYSQLPORT="3306"
+ENV MYSQLPASSWORD="PwOjFMfsKmhsaGDCPupdgcyEknLWFhnB"
+# NO fijes ASPNETCORE_URLS ni el puerto
 ENTRYPOINT ["dotnet", "ProyectoBraian.dll"]
