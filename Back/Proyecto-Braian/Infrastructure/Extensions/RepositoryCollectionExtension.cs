@@ -28,7 +28,7 @@ namespace Infrastructure.Extensions
                         var db = Environment.GetEnvironmentVariable("MYSQLDATABASE");
                         var user = Environment.GetEnvironmentVariable("MYSQLUSER");
                         var pass = Environment.GetEnvironmentVariable("MYSQLPASSWORD");
-                        var port = Environment.GetEnvironmentVariable("MYSQLPORT") ?? "3306";
+                        var port = Environment.GetEnvironmentVariable("MYSQL_PORT") ?? "3306";
 
                         if (!string.IsNullOrWhiteSpace(host))
                         {
