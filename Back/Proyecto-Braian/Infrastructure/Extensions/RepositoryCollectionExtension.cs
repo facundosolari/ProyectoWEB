@@ -46,7 +46,7 @@ namespace Infrastructure.Extensions
                     throw new Exception("❌ Error: No se encontró una cadena de conexión válida.");
                 }
 
-                var serverVersion = new MySqlServerVersion(new Version(8, 0, 30));
+                var serverVersion = ServerVersion.AutoDetect(connectionString);
 
                 options.UseMySql(connectionString, serverVersion, b =>
                 {
