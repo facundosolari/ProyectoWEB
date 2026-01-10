@@ -19,7 +19,7 @@ namespace Infrastructure.Extensions
                 try
                 {
                     // Intenta tomar la connection string del appsettings
-                    var connectionString = configuration.GetConnectionString("DefaultConnection");
+                    
 
                     // Tomamos las variables de entorno
                     var host = Environment.GetEnvironmentVariable("MYSQL_HOST");
@@ -27,6 +27,12 @@ namespace Infrastructure.Extensions
                     var user = Environment.GetEnvironmentVariable("MYSQL_USER");
                     var pass = Environment.GetEnvironmentVariable("MYSQL_PASSWORD");
                     var db = Environment.GetEnvironmentVariable("MYSQL_DATABASE");
+                    var connectionString = configuration.GetConnectionString("DefaultConnection")
+                        .Replace("${MYSQL_HOST}", host)
+                        .Replace("${MYSQL_PORT}", port)
+                        .Replace("${MYSQL_DATABASE}", db)
+                        .Replace("${MYSQL_USER}", user)
+                        .Replace("${MYSQL_PASSWORD}", pass);
 
                     // Si la connection string del appsettings es vacía, construimos desde variables de entorno
                     if (string.IsNullOrWhiteSpace(connectionString))
@@ -36,7 +42,7 @@ namespace Infrastructure.Extensions
                             connectionString = $"Server={host};Port={port};Database={db};User={user};Password={pass};";
                         }
                     }
-
+    
                     // Si sigue vacía, logueamos y lanzamos excepción
                     if (string.IsNullOrWhiteSpace(connectionString))
                     {
