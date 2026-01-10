@@ -5,90 +5,84 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// 1. CONFIGURACIÓN DEL PUERTO (Crucial para Railway)
+// 1. CONFIGURACIÓN DEL PUERTO (Vital para Railway)
+// Leemos la variable PORT que asigna Railway, si no existe usamos 8080
 var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
+
+// Forzamos a Kestrel (el servidor de .NET) a escuchar en todas las interfaces (0.0.0.0)
 builder.WebHost.ConfigureKestrel(options =>
 {
     options.ListenAnyIP(int.Parse(port));
 });
 
-var apiUrl = Environment.GetEnvironmentVariable("API_URL");
-Console.WriteLine($"La API que se pasó al contenedor es: {apiUrl}");
-
 try
 {
-    // ----------------------------
-    // BLOQUE DE SERVICIOS
-    // ----------------------------
+    Console.WriteLine($"--- 🏗️ INICIANDO CONFIGURACIÓN DE SERVICIOS (Puerto: {port}) ---");
+
+    // 2. REGISTRO DE SERVICIOS BÁSICOS
     builder.Services.AddControllers();
     builder.Services.AddEndpointsApiExplorer();
     builder.Services.AddSwaggerGen();
 
+    // 3. CONFIGURACIÓN DE CORS
     builder.Services.AddCors(options =>
     {
-        options.AddPolicy("AllowFrontend",
-            policy => policy
-                .WithOrigins(
+        options.AddPolicy("AllowFrontend", policy =>
+            policy.WithOrigins(
                     "http://localhost:5173",
                     "https://cobacha-60edd35ba-facundosolaris-projects.vercel.app",
                     "https://proyectoweb.up.railway.app"
                 )
                 .AllowAnyHeader()
                 .AllowAnyMethod()
-                .AllowCredentials()
-        );
+                .AllowCredentials());
     });
 
+    // 4. SERVICIOS DE CAPAS (Infraestructura y Aplicación)
+    Console.WriteLine("🔌 Registrando servicios de infraestructura...");
     builder.Services.AddInfrastructureServices(builder.Configuration);
+
     builder.Services.AddApplicationServices();
     builder.Services.AddHttpContextAccessor();
     builder.Services.AddJwtAuthentication(builder.Configuration);
-
-    // Agregamos el servicio de HealthChecks nativo
     builder.Services.AddHealthChecks();
 
     var app = builder.Build();
 
-    // ----------------------------
-    // 1. RUTAS DE SALUD (PRIMERO QUE NADA)
-    // ----------------------------
-    // Importante: Antes que Auth para que Railway pueda entrar sin token
-    app.MapGet("/health", (ILogger<Program> log) =>
-    {
-        log.LogInformation("Healthcheck manual solicitado");
-        return Results.Ok(new { Status = "Healthy", Port = port });
-    });
+    // ---------------------------------------------------------
+    // MIDDLEWARE - EL ORDEN ES IMPORTANTE
+    // ---------------------------------------------------------
 
+    // Healthcheck rápido para que Railway no mate el contenedor
     app.MapHealthChecks("/health");
 
-    // ----------------------------
-    // 2. CONFIGURACIÓN DE SWAGGER
-    // ----------------------------
-    // Forzamos Swagger en producción para visualizar la API
+    // Swagger habilitado en TODOS los entornos para pruebas en la nube
     app.UseSwagger();
     app.UseSwaggerUI(c =>
     {
         c.SwaggerEndpoint("/swagger/v1/swagger.json", "Proyecto API v1");
-        c.RoutePrefix = string.Empty; // Carga Swagger en la raíz
+        c.RoutePrefix = string.Empty; // Swagger cargará en la raíz: https://dominio.com/
     });
 
-    // ----------------------------
-    // 3. MIDDLEWARE DE SEGURIDAD Y RUTAS
-    // ----------------------------
     app.UseCors("AllowFrontend");
-    app.UseStaticFiles();
 
+    // No usamos HttpsRedirection en Railway porque ellos manejan el SSL externamente
+    if (app.Environment.IsDevelopment())
+    {
+        app.UseHttpsRedirection();
+    }
+
+    app.UseStaticFiles();
     app.UseAuthentication();
     app.UseAuthorization();
-
     app.MapControllers();
 
-    Console.WriteLine($"🚀 App iniciando en el puerto: {port}...");
+    Console.WriteLine($"🚀 APLICACIÓN LISTA Y ESCUCHANDO EN: {port}");
     app.Run();
 }
 catch (Exception ex)
 {
-    Console.WriteLine("💀 ERROR CRÍTICO EN ARRANQUE:");
+    Console.WriteLine("💀 ERROR CRÍTICO EN EL ARRANQUE:");
     Console.WriteLine(ex.Message);
     if (ex.InnerException != null)
         Console.WriteLine($"Inner Exception: {ex.InnerException.Message}");
