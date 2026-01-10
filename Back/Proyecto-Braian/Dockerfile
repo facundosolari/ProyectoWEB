@@ -5,7 +5,7 @@ EXPOSE 8081
 
 FROM mcr.microsoft.com/dotnet/sdk:8.0 as build
 ARG BUILD_CONFIGURATION=Release
-WORKDIR /src
+WORKDIR /ProyectoBraian
 COPY ["ProyectoBraian.Application.csproj", "ProyectoBraian.Application"]
 COPY ["ProyectoBraian.Infrastructure.csproj", "ProyectoBraian.Infrastructure"]
 COPY ["ProyectoBraian.Domain.csproj", "ProyectoBraian.Domain"]
