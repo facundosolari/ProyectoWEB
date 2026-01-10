@@ -1,4 +1,14 @@
 ﻿using Application.Extensions;
+using Infrastructure.Extensions;
+
+Tu Program.cs está muy bien, pero el orden de los componentes está causando que Railway detenga el contenedor. El problema es que el Healthcheck y el Swagger están quedando "atrapados" detrás de la lógica de autenticación o rutas mal configuradas para producción.
+
+Aquí tienes la versión adaptada para que Railway lo acepte, el contenedor se quede Online y puedas ver el Swagger directamente.
+
+Program.cs Adaptado
+C#
+
+using Application.Extensions;
 using Infrastructure.Context;
 using Infrastructure.Extensions;
 using Microsoft.EntityFrameworkCore;
@@ -41,56 +51,43 @@ try
     builder.Services.AddHttpContextAccessor();
     builder.Services.AddJwtAuthentication(builder.Configuration);
 
+    // Agregamos el servicio de HealthChecks nativo
+    builder.Services.AddHealthChecks();
+
     var app = builder.Build();
 
     // ----------------------------
-    // MIGRACIONES AUTOMÁTICAS
+    // 1. RUTAS DE SALUD (PRIMERO QUE NADA)
     // ----------------------------
-    // Nota: Si esto falla, la app no debería morir, por eso el try-catch interno
-    /*
-    try
+    // Ponemos esto antes que cualquier middleware de Auth o StaticFiles
+    app.MapGet("/health", (ILogger<Program> log) =>
     {
-        using (var scope = app.Services.CreateScope())
-        {
-            var db = scope.ServiceProvider.GetRequiredService<DataBaseContext>();
-            db.Database.Migrate();
-            Console.WriteLine("✅ Migraciones aplicadas correctamente");
-        }
-    }
-    catch (Exception ex)
-    {
-        Console.WriteLine("⚠️ Error no fatal al aplicar migraciones (revisa la conexión):");
-        Console.WriteLine(ex.Message);
-    }
-    */
+        log.LogInformation("Healthcheck manual solicitado a las {time}", DateTime.UtcNow);
+        return Results.Ok(new { Status = "Healthy", Port = port });
+    });
+
+    app.MapHealthChecks("/health");
 
     // ----------------------------
-    // BLOQUE DE MIDDLEWARE
+    // 2. CONFIGURACIÓN DE SWAGGER
     // ----------------------------
-    if (app.Environment.IsDevelopment() || true) // Forzamos Swagger para ver si funciona en Railway
+    // Forzamos Swagger en producción para poder testear la DB
+    app.UseSwagger();
+    app.UseSwaggerUI(c =>
     {
-        app.UseSwagger();
-        app.UseSwaggerUI(c =>
-        {
-            c.SwaggerEndpoint("/swagger/v1/swagger.json", "Proyecto API v1");
-            c.RoutePrefix = "api-docs"; // Accederás vía proyectoweb.up.railway.app/api-docs
-        });
-    }
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Proyecto API v1");
+        // Dejamos RoutePrefix vacío para que cargue en la raíz (proyectoweb.up.railway.app/)
+        c.RoutePrefix = string.Empty;
+    });
 
+    // ----------------------------
+    // 3. MIDDLEWARE DE SEGURIDAD Y RUTAS
+    // ----------------------------
     app.UseCors("AllowFrontend");
     app.UseStaticFiles();
 
     app.UseAuthentication();
     app.UseAuthorization();
-
-    // ----------------------------
-    // RUTAS
-    // ----------------------------
-    app.MapGet("/health", (ILogger<Program> log) =>
-    {
-        log.LogInformation("Healthcheck requested at {time}", DateTime.UtcNow);
-        return Results.Ok(new { Status = "Healthy", Port = port });
-    });
 
     app.MapControllers();
 
@@ -99,12 +96,11 @@ try
 }
 catch (Exception ex)
 {
-    // Esto captura errores de compilación del builder o crash al arrancar
     Console.WriteLine("💀 ERROR CRÍTICO EN ARRANQUE:");
     Console.WriteLine(ex.Message);
     if (ex.InnerException != null)
         Console.WriteLine($"Inner Exception: {ex.InnerException.Message}");
 
     Console.WriteLine(ex.StackTrace);
-    throw; // Re-lanzar para que Railway sepa que el deploy falló
+    throw;
 }
