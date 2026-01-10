@@ -24,11 +24,11 @@ namespace Infrastructure.Extensions
                     // Si no existe, la construimos desde variables de entorno (Railway)
                     if (string.IsNullOrWhiteSpace(connectionString))
                     {
-                        var host = Environment.GetEnvironmentVariable("MYSQLHOST");
-                        var db = Environment.GetEnvironmentVariable("MYSQLDATABASE");
-                        var user = Environment.GetEnvironmentVariable("MYSQLUSER");
-                        var pass = Environment.GetEnvironmentVariable("MYSQLPASSWORD");
+                        var host = Environment.GetEnvironmentVariable("MYSQL_HOST");
                         var port = Environment.GetEnvironmentVariable("MYSQL_PORT") ?? "3306";
+                        var user = Environment.GetEnvironmentVariable("MYSQL_USER");
+                        var pass = Environment.GetEnvironmentVariable("MYSQL_PASSWORD");
+                        var db = Environment.GetEnvironmentVariable("MYSQL_DATABASE");
 
                         if (!string.IsNullOrWhiteSpace(host))
                         {
