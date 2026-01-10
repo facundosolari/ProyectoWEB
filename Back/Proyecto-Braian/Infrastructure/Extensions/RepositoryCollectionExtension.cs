@@ -39,7 +39,7 @@ namespace Infrastructure.Extensions
                     {
                         if (!string.IsNullOrWhiteSpace(host))
                         {
-                            connectionString = $"Server={host};Port={port};Database={db};User={user};Password={pass};";
+                            connectionString = $"Server={host};Port={port};Database={db};User={user};Password={pass};Connect Timeout=90;";
                         }
                     }
     
