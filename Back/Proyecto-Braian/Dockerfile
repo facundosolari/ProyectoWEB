@@ -19,12 +19,6 @@ FROM mcr.microsoft.com/dotnet/aspnet:8.0
 WORKDIR /app
 
 COPY --from=build /app/publish .
-ENV API_URL=https://proyectoweb.up.railway.app
-ENV MYSQL_HOST="mysql-production-2a45.up.railway.app"
-ENV MYSQL_PORT="3306"
-ENV MYSQL_DATABASE="railway"
-ENV MYSQL_USER="root"
-ENV MYSQL_PASSWORD="PwOjFMfsKmhsaGDCPupdgcyEknLWFhnB"
-ENV MYSQL_ROOT_PASSWORD="PwOjFMfsKmhsaGDCPupdgcyEknLWFhnB"
 # NO fijes ASPNETCORE_URLS ni el puerto
+
 ENTRYPOINT ["dotnet", "ProyectoBraian.dll"]
