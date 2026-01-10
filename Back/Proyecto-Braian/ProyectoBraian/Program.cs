@@ -3,54 +3,50 @@ using Infrastructure.Context;
 using Infrastructure.Extensions;
 using Microsoft.EntityFrameworkCore;
 
-var apiUrl = Environment.GetEnvironmentVariable("API_URL");
+var builder = WebApplication.CreateBuilder(args);
 
-// Mostrarla en consola
+// 1. CONFIGURACIÓN DEL PUERTO (Crucial para Railway)
+var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
+builder.WebHost.UseUrls($"http://0.0.0.0:{port}");
+
+var apiUrl = Environment.GetEnvironmentVariable("API_URL");
 Console.WriteLine($"La API que se pasó al contenedor es: {apiUrl}");
+
 try
 {
-    var builder = WebApplication.CreateBuilder(args);
-
     // ----------------------------
     // BLOQUE DE SERVICIOS
-    try
-    {
-        builder.Services.AddControllers();
-        builder.Services.AddEndpointsApiExplorer();
-        builder.Services.AddSwaggerGen();
-        builder.Services.AddCors(options =>
-        {
-            options.AddPolicy("AllowFrontend",
-                policy => policy
-                    .WithOrigins(
-                        "http://localhost:5173",
-                        "https://cobacha-60edd35ba-facundosolaris-projects.vercel.app",
-                        "https://proyectoweb.up.railway.app"
-                    )
-                    .AllowAnyHeader()
-                    .AllowAnyMethod()
-                    .AllowCredentials()
-            );
-        });
-        builder.Services.AddInfrastructureServices(builder.Configuration);
-        builder.Services.AddApplicationServices();
-        builder.Services.AddHttpContextAccessor();
-        builder.Services.AddJwtAuthentication(builder.Configuration);
+    // ----------------------------
+    builder.Services.AddControllers();
+    builder.Services.AddEndpointsApiExplorer();
+    builder.Services.AddSwaggerGen();
 
-        var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
-        builder.WebHost.UseUrls($"http://0.0.0.0:{port}");
-    }
-    catch (Exception ex)
+    builder.Services.AddCors(options =>
     {
-        Console.WriteLine("❌ Error en configuración de servicios:");
-        Console.WriteLine(ex.Message);
-        Console.WriteLine(ex.StackTrace);
-    }
+        options.AddPolicy("AllowFrontend",
+            policy => policy
+                .WithOrigins(
+                    "http://localhost:5173",
+                    "https://cobacha-60edd35ba-facundosolaris-projects.vercel.app",
+                    "https://proyectoweb.up.railway.app"
+                )
+                .AllowAnyHeader()
+                .AllowAnyMethod()
+                .AllowCredentials()
+        );
+    });
+
+    builder.Services.AddInfrastructureServices(builder.Configuration);
+    builder.Services.AddApplicationServices();
+    builder.Services.AddHttpContextAccessor();
+    builder.Services.AddJwtAuthentication(builder.Configuration);
 
     var app = builder.Build();
 
     // ----------------------------
     // MIGRACIONES AUTOMÁTICAS
+    // ----------------------------
+    // Nota: Si esto falla, la app no debería morir, por eso el try-catch interno
     try
     {
         using (var scope = app.Services.CreateScope())
@@ -62,61 +58,51 @@ try
     }
     catch (Exception ex)
     {
-        Console.WriteLine("❌ Error al aplicar migraciones:");
+        Console.WriteLine("⚠️ Error no fatal al aplicar migraciones (revisa la conexión):");
         Console.WriteLine(ex.Message);
-        Console.WriteLine(ex.StackTrace);
     }
 
     // ----------------------------
     // BLOQUE DE MIDDLEWARE
-    try
+    // ----------------------------
+    if (app.Environment.IsDevelopment() || true) // Forzamos Swagger para ver si funciona en Railway
     {
         app.UseSwagger();
         app.UseSwaggerUI(c =>
         {
             c.SwaggerEndpoint("/swagger/v1/swagger.json", "Proyecto API v1");
-            c.RoutePrefix = "api-docs";
+            c.RoutePrefix = "api-docs"; // Accederás vía proyectoweb.up.railway.app/api-docs
         });
-
-        app.UseCors("AllowFrontend");
-        app.UseStaticFiles();
-
-        app.UseAuthentication();
-        app.UseAuthorization();
     }
-    catch (Exception ex)
-    {
-        Console.WriteLine("❌ Error en configuración de middleware:");
-        Console.WriteLine(ex.Message);
-        Console.WriteLine(ex.StackTrace);
-    }
+
+    app.UseCors("AllowFrontend");
+    app.UseStaticFiles();
+
+    app.UseAuthentication();
+    app.UseAuthorization();
 
     // ----------------------------
     // RUTAS
+    // ----------------------------
     app.MapGet("/health", (ILogger<Program> log) =>
     {
         log.LogInformation("Healthcheck requested at {time}", DateTime.UtcNow);
-        return Results.Ok("Healthy");
+        return Results.Ok(new { Status = "Healthy", Port = port });
     });
 
     app.MapControllers();
 
-    // ----------------------------
-    try
-    {
-        app.Run();
-        Console.WriteLine("✅ App lista, esperando requests...");
-    }
-    catch (Exception ex)
-    {
-        Console.WriteLine("❌ Error al iniciar la app:");
-        Console.WriteLine(ex.Message);
-        Console.WriteLine(ex.StackTrace);
-    }
+    Console.WriteLine($"🚀 App iniciando en el puerto: {port}...");
+    app.Run();
 }
 catch (Exception ex)
 {
+    // Esto captura errores de compilación del builder o crash al arrancar
     Console.WriteLine("💀 ERROR CRÍTICO EN ARRANQUE:");
     Console.WriteLine(ex.Message);
+    if (ex.InnerException != null)
+        Console.WriteLine($"Inner Exception: {ex.InnerException.Message}");
+
     Console.WriteLine(ex.StackTrace);
+    throw; // Re-lanzar para que Railway sepa que el deploy falló
 }
