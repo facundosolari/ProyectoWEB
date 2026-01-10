@@ -21,15 +21,16 @@ namespace Infrastructure.Extensions
                     // Intenta tomar la connection string del appsettings
                     var connectionString = configuration.GetConnectionString("DefaultConnection");
 
-                    // Si no existe, la construimos desde variables de entorno (Railway)
+                    // Tomamos las variables de entorno
+                    var host = Environment.GetEnvironmentVariable("MYSQL_HOST");
+                    var port = Environment.GetEnvironmentVariable("MYSQL_PORT") ?? "3306";
+                    var user = Environment.GetEnvironmentVariable("MYSQL_USER");
+                    var pass = Environment.GetEnvironmentVariable("MYSQL_PASSWORD");
+                    var db = Environment.GetEnvironmentVariable("MYSQL_DATABASE");
+
+                    // Si la connection string del appsettings es vacía, construimos desde variables de entorno
                     if (string.IsNullOrWhiteSpace(connectionString))
                     {
-                        var host = Environment.GetEnvironmentVariable("MYSQL_HOST");
-                        var port = Environment.GetEnvironmentVariable("MYSQL_PORT") ?? "3306";
-                        var user = Environment.GetEnvironmentVariable("MYSQL_USER");
-                        var pass = Environment.GetEnvironmentVariable("MYSQL_PASSWORD");
-                        var db = Environment.GetEnvironmentVariable("MYSQL_DATABASE");
-
                         if (!string.IsNullOrWhiteSpace(host))
                         {
                             connectionString = $"Server={host};Port={port};Database={db};User={user};Password={pass};";
@@ -44,7 +45,7 @@ namespace Infrastructure.Extensions
                     }
 
                     // Logueamos info de la DB (sin la contraseña)
-                    Console.WriteLine($"✅ DB Connection: Server={Environment.GetEnvironmentVariable("MYSQLHOST")};Port={Environment.GetEnvironmentVariable("MYSQLPORT")};Database={Environment.GetEnvironmentVariable("MYSQLDATABASE")};User={Environment.GetEnvironmentVariable("MYSQLUSER")};Password=*****");
+                    Console.WriteLine($"✅ DB Connection: Server={host};Port={port};Database={db};User={user};Password=*****");
 
                     // Configuramos DbContext con AutoDetect para mayor flexibilidad
                     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
