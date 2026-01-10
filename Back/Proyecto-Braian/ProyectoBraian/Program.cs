@@ -48,6 +48,25 @@ try
     var app = builder.Build();
 
     // ----------------------------
+    // APLICAR MIGRACIONES AUTOMÁTICAS
+    try
+    {
+        using (var scope = app.Services.CreateScope())
+        {
+            var dbContext = scope.ServiceProvider.GetRequiredService<DataBaseContext>();
+            Console.WriteLine("🔄 Aplicando migraciones de la DB...");
+            dbContext.Database.Migrate();
+            Console.WriteLine("✅ Migraciones aplicadas correctamente.");
+        }
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine("❌ Error aplicando migraciones:");
+        Console.WriteLine(ex.Message);
+        Console.WriteLine(ex.StackTrace);
+    }
+
+    // ----------------------------
     // BLOQUE DE MIDDLEWARE
     try
     {
@@ -96,38 +115,7 @@ try
 }
 catch (Exception ex)
 {
-    
     Console.WriteLine("💀 ERROR CRÍTICO EN ARRANQUE:");
     Console.WriteLine(ex.Message);
     Console.WriteLine(ex.StackTrace);
 }
-
-// Loggear el error crítico
-
-// Environment.Exit(1); // Termina el proceso con código 1
-
-
-// ----------------------------
-// Abrir Swagger automáticamente solo en local
-/*
-if (port == 5000)
-{
-    var url = $"http://localhost:{port}/api-docs";
-    try
-    {
-        var psi = new System.Diagnostics.ProcessStartInfo
-        {
-            FileName = url,
-            UseShellExecute = true
-        };
-        System.Diagnostics.Process.Start(psi);
-    }
-    catch (Exception ex)
-    {
-        Console.WriteLine("No se pudo abrir el navegador automáticamente: " + ex.Message);
-    }
-}
-*/
-
-// ----------------------------
-// Ejecutar
