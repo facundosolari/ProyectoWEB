@@ -1,6 +1,7 @@
 ﻿using Application.Extensions;
 using Infrastructure.Context;
 using Infrastructure.Extensions;
+using Microsoft.EntityFrameworkCore;
 
 var apiUrl = Environment.GetEnvironmentVariable("API_URL");
 

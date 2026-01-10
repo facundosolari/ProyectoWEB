@@ -16,52 +16,47 @@ namespace Infrastructure.Extensions
         {
             services.AddDbContext<DataBaseContext>(options =>
             {
-                try
+                // 1. Intentamos obtener la cadena base del appsettings.json
+                var connectionString = configuration.GetConnectionString("DefaultConnection");
+
+                // 2. Tomamos las variables de entorno (útil para Railway/Producción)
+                var host = Environment.GetEnvironmentVariable("MYSQLHOST");
+                var port = Environment.GetEnvironmentVariable("MYSQLPORT") ?? "3306";
+                var user = Environment.GetEnvironmentVariable("MYSQLUSER");
+                var pass = Environment.GetEnvironmentVariable("MYSQLPASSWORD");
+                var db = Environment.GetEnvironmentVariable("MYSQLDATABASE");
+
+                // 3. Si las variables de entorno existen, construimos la cadena con ellas
+                if (!string.IsNullOrWhiteSpace(host) && !string.IsNullOrWhiteSpace(user))
                 {
-                    // Intenta tomar la connection string del appsettings
-                    
-
-                    // Tomamos las variables de entorno
-                    var host = Environment.GetEnvironmentVariable("MYSQL_HOST");
-                    var port = Environment.GetEnvironmentVariable("MYSQL_PORT") ?? "3306";
-                    var user = Environment.GetEnvironmentVariable("MYSQL_USER");
-                    var pass = Environment.GetEnvironmentVariable("MYSQL_PASSWORD");
-                    var db = Environment.GetEnvironmentVariable("MYSQL_DATABASE");
-                    var connectionString = configuration.GetConnectionString("DefaultConnection")
-                        .Replace("${MYSQL_HOST}", host)
-                        .Replace("${MYSQL_PORT}", port)
-                        .Replace("${MYSQL_DATABASE}", db)
-                        .Replace("${MYSQL_USER}", user)
-                        .Replace("${MYSQL_PASSWORD}", pass);
-
-                    // Si la connection string del appsettings es vacía, construimos desde variables de entorno
-                    if (string.IsNullOrWhiteSpace(connectionString))
-                    {
-                        if (!string.IsNullOrWhiteSpace(host))
-                        {
-                            connectionString = $"Server={host};Port={port};Database={db};User={user};Password={pass};Connect Timeout=90;";
-                        }
-                    }
-    
-                    // Si sigue vacía, logueamos y lanzamos excepción
-                    if (string.IsNullOrWhiteSpace(connectionString))
-                    {
-                        Console.WriteLine("❌ Connection string no encontrada, revisa tus variables de entorno.");
-                        throw new Exception("Connection string no encontrada");
-                    }
-
-                    // Logueamos info de la DB (sin la contraseña)
-                    Console.WriteLine($"✅ DB Connection: Server={host};Port={port};Database={db};User={user};Password=*****");
-
-                    // Configuramos DbContext con AutoDetect para mayor flexibilidad
-                    options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
+                    connectionString = $"Server={host};Port={port};Database={db};User={user};Password={pass};Connect Timeout=120;";
+                    Console.WriteLine($"✅ Usando variables de entorno - DB Connection: Server={host};Port={port};Database={db};User={user};Password=*****");
                 }
-                catch (Exception ex)
+                else
                 {
-                    Console.WriteLine("❌ Error al configurar DbContext:");
-                    Console.WriteLine(ex.Message);
-                    Console.WriteLine(ex.StackTrace);
+                    Console.WriteLine("ℹ️ Usando ConnectionString de appsettings.json");
                 }
+
+                // 4. Verificación de seguridad
+                if (string.IsNullOrWhiteSpace(connectionString))
+                {
+                    throw new Exception("❌ Error: No se encontró una cadena de conexión válida.");
+                }
+
+                // 5. Configuración de versión manual
+                var serverVersion = new MySqlServerVersion(new Version(8, 0, 30));
+
+                options.UseMySql(connectionString, serverVersion, b =>
+                {
+                    b.MigrationsAssembly("Infrastructure");
+
+                    // --- NUEVOS CAMBIOS PARA RESILIENCIA ---
+                    b.EnableRetryOnFailure(
+                        maxRetryCount: 5,               // Reintenta hasta 5 veces
+                        maxRetryDelay: TimeSpan.FromSeconds(10), // Espera entre reintentos
+                        errorNumbersToAdd: null
+                    );
+                });
             });
 
             // ----------------------------
