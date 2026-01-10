@@ -13,7 +13,7 @@ WORKDIR /ProyectoBraian
 COPY ["ProyectoBraian.Application.csproj", "ProyectoBraian.Application/"]
 COPY ["ProyectoBraian.Infrastructure.csproj", "ProyectoBraian.Infrastructure/"]
 COPY ["ProyectoBraian.Domain.csproj", "ProyectoBraian.Domain/"]
-COPY ["Proyecto-Braian/ProyectoBraian/ProyectoBraian.csproj", "ProyectoBraian.ProyectoBraian/"]
+COPY ["ProyectoBraian/ProyectoBraian/ProyectoBraian.csproj", "ProyectoBraian.ProyectoBraian/"]
 
 # Restaurar paquetes
 RUN dotnet restore "ProyectoBraian.Application/Application.csproj"
