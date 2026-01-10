@@ -47,6 +47,7 @@ try
     // MIGRACIONES AUTOMÁTICAS
     // ----------------------------
     // Nota: Si esto falla, la app no debería morir, por eso el try-catch interno
+    /*
     try
     {
         using (var scope = app.Services.CreateScope())
@@ -61,6 +62,7 @@ try
         Console.WriteLine("⚠️ Error no fatal al aplicar migraciones (revisa la conexión):");
         Console.WriteLine(ex.Message);
     }
+    */
 
     // ----------------------------
     // BLOQUE DE MIDDLEWARE
