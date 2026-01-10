@@ -7,7 +7,10 @@ var builder = WebApplication.CreateBuilder(args);
 
 // 1. CONFIGURACIÓN DEL PUERTO (Crucial para Railway)
 var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
-builder.WebHost.UseUrls($"http://0.0.0.0:{port}");
+builder.WebHost.ConfigureKestrel(options =>
+{
+    options.ListenAnyIP(int.Parse(port));
+});
 
 var apiUrl = Environment.GetEnvironmentVariable("API_URL");
 Console.WriteLine($"La API que se pasó al contenedor es: {apiUrl}");
