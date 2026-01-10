@@ -9,7 +9,7 @@ WORKDIR /ProyectoBraian
 COPY ["ProyectoBraian.Application.csproj", "Proyecto-Braian.Application"]
 COPY ["ProyectoBraian.Infrastructure.csproj", "Proyecto-Braian.Infrastructure"]
 COPY ["ProyectoBraian.Domain.csproj", "Proyecto-Braian.Domain"]
-COPY ["Proyecto-Braian/ProyectoBraian/ProyectoBraian.csproj", "ProyectoBraian.ProyectoBraian"]
+COPY ["Proyecto-Braian/ProyectoBraian/ProyectoBraian.csproj", "ProyectoBraian/"]
 RUN dotnet restore "ProyectoBraian.Application/Application.csproj"
 RUN dotnet restore "ProyectoBraian.Infrastructure/Infrastructure.csproj"
 RUN dotnet restore "ProyectoBraian.ProyectoBraian/ProyectoBraian.csproj"
