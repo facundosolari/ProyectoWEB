@@ -1,6 +1,6 @@
 ﻿using Application.Extensions;
-using Infrastructure.Extensions;
 using Infrastructure.Context;
+using Infrastructure.Extensions;
 
 var apiUrl = Environment.GetEnvironmentVariable("API_URL");
 
@@ -49,20 +49,19 @@ try
     var app = builder.Build();
 
     // ----------------------------
-    // APLICAR MIGRACIONES AUTOMÁTICAS
+    // MIGRACIONES AUTOMÁTICAS
     try
     {
         using (var scope = app.Services.CreateScope())
         {
-            var dbContext = scope.ServiceProvider.GetRequiredService<DataBaseContext>();
-            Console.WriteLine("🔄 Aplicando migraciones de la DB...");
-            dbContext.Database.Migrate();
-            Console.WriteLine("✅ Migraciones aplicadas correctamente.");
+            var db = scope.ServiceProvider.GetRequiredService<DataBaseContext>();
+            db.Database.Migrate();
+            Console.WriteLine("✅ Migraciones aplicadas correctamente");
         }
     }
     catch (Exception ex)
     {
-        Console.WriteLine("❌ Error aplicando migraciones:");
+        Console.WriteLine("❌ Error al aplicar migraciones:");
         Console.WriteLine(ex.Message);
         Console.WriteLine(ex.StackTrace);
     }
